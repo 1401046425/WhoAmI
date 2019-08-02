@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Timeline;
+using UnityEngine.Playables;
 
 public class BaseLevelManager : Singleton<BaseLevelManager>
 {
+    public PlayableDirector[] PLABDirectiors;
     public AudioClip[] BackGroundMusics;//背景音乐Clip
     public AudioClip[] Sounds;//音效Clip
     public TextAsset[] InfoTextAsset;//文本资源
     public TextMeshPro[] InfoText_View;//TextMeshPro文本显示
     public TextMeshProUGUI[] InfoTextUGUI_View;//TextMeshProUI文本显示
     private static AudioSource BGMPlayerINS;
-
 
     public AudioSource BGM_Player {
         get {
@@ -24,7 +26,7 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
             return BGMPlayerINS;
         }
     }//背景音乐播放器
-  
+
     private void Awake()
     {
 
@@ -203,6 +205,12 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
 
         PlayTextMeshUGUIInfo_Coroutine = StartCoroutine(PlayTextInfo(textMesh, infoAsset, CallBack));
     }
+    //播放TimeLine
+    public void PlayTimeLine(PlayableDirector director)
+    {
+        director.Play();
+    }
+
     /// <summary>
     /// 退出关卡
     /// </summary>

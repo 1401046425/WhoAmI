@@ -25,3 +25,13 @@ Update Mode: updateDependencies
 
 The following packages were updated:
   com.unity.render-pipelines.lightweight from version 6.7.1 to 6.9.0
+
+=== Fri Aug  2 19:44:14 2019
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.test-framework from version 1.0.13 to 1.0.17
+The following packages were removed:
+  com.unity.package-manager-ui@2.2.0

@@ -26,11 +26,14 @@ public class FPSCounter : MonoBehaviour
     //GUI 的样式
     private GUIStyle style;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
     void Start()
     {
         startRect.width *= Screen.width;
         startRect.height *= Screen.height;
-        Application.targetFrameRate = 30;
         StartCoroutine(FPS());
     }
 

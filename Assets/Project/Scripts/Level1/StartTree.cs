@@ -28,6 +28,10 @@ public class StartTree:MonoBehaviour
         if (Tree_spriteRenderer.color.a >= 1)
         {
             treespritenumber++;
+            if (treespritenumber == Tree_Sprites.Length)
+            {
+                Level1Manager.INS.PlayTimeLine(Level1Manager.INS.PLABDirectiors[0]);
+            }
             if (UpdateTree!=null)
             {
                 StopCoroutine(UpdateTree);
