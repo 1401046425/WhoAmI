@@ -11,7 +11,7 @@ public class PlayerController2D : CharacterController2D
     [Header("开发模式")]
     [Space]
     [SerializeField] private bool IsDevelopMod;
-    [SerializeField] private Animator m_Animator;
+    [SerializeField] public Animator m_Animator;
     [SerializeField] private Transform m_HandPos;
     private bool m_Jump;
     private bool Jump { get {
@@ -48,14 +48,18 @@ public class PlayerController2D : CharacterController2D
             Swipe.OnSwipe.AddListener(OnTouchSwipe);
 
 
+
+        OnLandEvent.AddListener(OnLand);
+        OnCrouchEvent.AddListener(OnCrouch);
+
+    }
+    private void OnEnable()
+    {
         ItemManager.INS.OnItemDown += OnDargItem;
         ItemManager.INS.OnItemUp += OnDesDargItem;
         ItemManager.INS.Item_Grid.OnItemTakeOut += TakeOutItem;
-        OnLandEvent.AddListener(OnLand);
-        OnCrouchEvent.AddListener(OnCrouch);
         ItemGrid.INS.OnItemSlect += ShowSlectItem;
     }
-
     private void OnCrouch(bool arg0)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, 5f);
@@ -69,7 +73,7 @@ public class PlayerController2D : CharacterController2D
                 }
             }
         }
-    }
+    }//玩家蹲下
 
     private void TakeOutItem(Item _item)
     {
@@ -79,16 +83,17 @@ public class PlayerController2D : CharacterController2D
         {
             TakeItem = null;
         }
-    }
+    }//拿出物品
     private void ClearTakeItem()
     {
         if (TakeItem == null)
             return;
+        OnActionEvent.RemoveAllListeners();
         TakeItem.transform.SetParent(null);
         TakeItem.gameObject.SetActive(false);
         TakeItem.transform.localScale = Vector3.one;
         TakeItem = null;
-    }
+    }//清空手中物品
     void ShowSlectItem(Item _item)
     {
         if (_item == null)
@@ -105,6 +110,13 @@ public class PlayerController2D : CharacterController2D
         _item.gameObject.SetActive(true);
         _item.transform.SetParent(m_HandPos);
         _item.transform.localPosition = Vector2.one;
+        if (_item.transform.localScale.x < 0)
+        {
+
+            _item.transform.localScale=new Vector3(Math.Abs(_item.transform.localScale.x),
+                _item.transform.localScale.y,
+                _item.transform.localScale.z);
+        }
         try
         {
             _item.GetComponent<Rigidbody2D>().simulated = false;
@@ -119,21 +131,21 @@ public class PlayerController2D : CharacterController2D
         TakeItem = _item.gameObject;
 
 
-    }
+    }//展示选中物品
     private void OnDesUseItem()
     {
         OnActionEvent.RemoveAllListeners();
         TakeItem = null;
-    }
+    }//取消使用物品
     private void OnDargItem(Item item)
     {
         CanControl = false;
-    }
+    }//当鼠标拽动物品
     private void OnDesDargItem(Item item)
     {
         StartCoroutine(AwakeControl());
-    }
-     IEnumerator AwakeControl()
+    }//当鼠标取消拽动物品
+    IEnumerator AwakeControl()
     {
         yield return new WaitForFixedUpdate();
         CanControl = true;
@@ -151,7 +163,7 @@ public class PlayerController2D : CharacterController2D
                 Jump = true;
             }
         }
-        m_Animator.SetBool("OnLand", m_Grounded);
+
     }
     private void FixedUpdate()
     {
@@ -160,12 +172,13 @@ public class PlayerController2D : CharacterController2D
         m_Animator.SetFloat("MoveSpeed", Mathf.Abs(PlayerMovePos.x));
         m_Animator.SetBool("IsCrouch", m_wasCrouching);
 
+       m_Animator.SetBool("OnLand", m_Grounded);
 
     }
     public void OnLand()
     {
 
-    }
+    }//当玩家踩在地面
     public void OnTouch(Lean.Touch.LeanFinger finger)
     {
         if (!finger.IsOverGui)
@@ -198,7 +211,7 @@ public class PlayerController2D : CharacterController2D
             {
                Jump = true;
             }
-            if (finger.SwipeScreenDelta.x > 20)
+            if (finger.SwipeScreenDelta.x > 20|| finger.SwipeScreenDelta.x < -20)
             {
                 OnActionEvent.Invoke();
             }
@@ -209,6 +222,16 @@ public class PlayerController2D : CharacterController2D
     {
         PlayerMovePos = Vector2.zero;
         Crouch = false;
+    }
+    private void OnDisable()
+    {
+        if (ItemManager.INS != null)
+        {
+            ItemManager.INS.OnItemDown -= OnDargItem;
+            ItemManager.INS.OnItemUp -= OnDesDargItem;
+            ItemManager.INS.Item_Grid.OnItemTakeOut -= TakeOutItem;
+            ItemGrid.INS.OnItemSlect -= ShowSlectItem;
+        }
     }
     private void OnDestroy()
     {

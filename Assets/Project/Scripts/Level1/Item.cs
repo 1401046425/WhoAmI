@@ -103,8 +103,7 @@ public class Item : MonoBehaviour
         {
             Item_Collider2D = gameObject.AddComponent<CircleCollider2D>();
         }
-        if (FreezeRotation)
-            Item_RigidBody2D.freezeRotation = FreezeRotation;
+
         try
         {
             Item_RigidBody2D = GetComponent<Rigidbody2D>();
@@ -112,6 +111,8 @@ public class Item : MonoBehaviour
         catch
         {
         }
+        if (FreezeRotation)
+            Item_RigidBody2D.freezeRotation = FreezeRotation;
     }
     public virtual void OnMouseDonwItem()
     {

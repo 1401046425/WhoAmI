@@ -28,7 +28,7 @@ public class FPSCounter : MonoBehaviour
 
     private void Awake()
     {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
     }
     void Start()
     {

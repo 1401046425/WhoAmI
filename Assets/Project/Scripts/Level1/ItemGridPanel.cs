@@ -7,14 +7,38 @@ using UnityEngine.Events;
 public class ItemGridPanel : BaseUIPanel
 {
     [SerializeField] public Transform Content;
-
+    List<ItemIcon> IconList=new List<ItemIcon>();
     private void Awake()
     {
         ItemManager.INS.Item_Grid.OnItemAdd += AddItemicon;
         ItemManager.INS.Item_Grid.OnItemTakeOut += TakeOutItem;
     }
     // Start is called before the first frame update
-
+    private void OnEnable()
+    {
+        UpdateGrid();
+    }
+    public void UpdateGrid()
+    {
+        foreach (var item in ItemManager.INS.Item_Grid._Grid)
+        {
+            if (!HasIcon(item.ItemName))
+            {
+                AddItemicon(item);
+            }
+        }
+    }
+    private bool HasIcon(string Name)
+    {
+        foreach (var item in IconList)
+        {
+            if (item.ItemName == Name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     private void AddItemicon(Item item)
     {
         var Icon = new GameObject();

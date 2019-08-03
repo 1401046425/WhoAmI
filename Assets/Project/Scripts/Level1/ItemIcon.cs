@@ -52,7 +52,7 @@ public class ItemIcon : MonoBehaviour,IPointerClickHandler,IBeginDragHandler,IDr
             if (eventData.position.y >= Screen.height / 3)
             {
                 Destroy(gameObject);
-                var Item = ItemManager.INS.TakeItemfromGrid(ItemName);
+               ItemManager.INS.TakeItemfromGrid(ItemName);
 
             }
             else

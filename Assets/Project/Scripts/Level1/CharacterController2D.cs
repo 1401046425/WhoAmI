@@ -67,8 +67,6 @@ public class CharacterController2D : MonoBehaviour
         {
             m_Rigidbody2D.velocity +=Vector2.down* Time.fixedDeltaTime * m_FallDownSeppd;
         }
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
         Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -79,6 +77,10 @@ public class CharacterController2D : MonoBehaviour
                     OnLandEvent.Invoke();
             }
         }
+
+        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+
     }
     void CheckFallDown()
     {

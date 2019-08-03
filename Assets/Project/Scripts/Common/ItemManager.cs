@@ -50,7 +50,8 @@ public class ItemManager : Singleton<ItemManager>
         if (GetItemFromGrid(_item.ItemName))
             return;
         Item_Grid._Grid.Add(_item);
-        Item_Grid.OnItemAdd.Invoke(_item);
+        if(Item_Grid.OnItemAdd!=null)
+            Item_Grid.OnItemAdd.Invoke(_item);
         _item.gameObject.SetActive(false);
 
     }
