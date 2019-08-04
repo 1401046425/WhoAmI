@@ -17,6 +17,8 @@ public class ItemManager : Singleton<ItemManager>
         {
             Debug.LogError("找不到ItemGrid组件的实例");
         }
+
+        Item_Grid.OnItemAdd += CheckTimeTaskItem;
     }
     public Item TakeItemfromGrid(string ItemName)
     {
@@ -26,7 +28,7 @@ public class ItemManager : Singleton<ItemManager>
             {
                 var get_item = item;
                 Item_Grid._Grid.Remove(item);
-                Item_Grid.OnItemTakeOut.Invoke(get_item);
+                Item_Grid.OnItemTakeOut?.Invoke(get_item);
                 return get_item;
             }
         }
@@ -55,6 +57,17 @@ public class ItemManager : Singleton<ItemManager>
         _item.gameObject.SetActive(false);
 
     }
+
+    private void CheckTimeTaskItem(Item _item)
+    {
+        if (_item.TimeTaskItem && !_item.IsTasked)
+        {
+            TimeTaskManager.INS.AddPoint();
+            _item.IsTasked = true;
+        }
+        
+    }
+
     public void AddItemToManager(Item _item)
     {
         if (string.IsNullOrWhiteSpace(_item.ItemName))

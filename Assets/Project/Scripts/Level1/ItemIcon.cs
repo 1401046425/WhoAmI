@@ -35,6 +35,7 @@ public class ItemIcon : MonoBehaviour,IPointerClickHandler,IBeginDragHandler,IDr
         {
             transform.SetParent(GameObject.Find("UI").transform);
             transform.position = eventData.position;
+            ItemGrid.INS.NowSlectItem = null;
         }
 
     }
@@ -61,6 +62,7 @@ public class ItemIcon : MonoBehaviour,IPointerClickHandler,IBeginDragHandler,IDr
                 transform.SetParent(View.Content);
             }
         }
+        ItemGrid.INS.NowSlectItem = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)

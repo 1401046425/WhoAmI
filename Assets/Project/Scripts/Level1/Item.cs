@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,8 @@ public class Item : MonoBehaviour
     [SerializeField] public string ItemName;
     [SerializeField] public Sprite ItemImage;
     [SerializeField] public bool FreezeRotation;
+    [SerializeField] public  bool TimeTaskItem;
+    [HideInInspector]public bool IsTasked;
     private bool UseRigidBody2D;
     [SerializeField] public bool Item_UseRigidBody2D
     {
@@ -144,7 +147,7 @@ public class Item : MonoBehaviour
     }
     public virtual void OnUse()
     {
-        OnDesUseItem.Invoke();
+        OnDesUseItem?.Invoke();
         OnDesUseItem = null;
     }
 
@@ -175,4 +178,32 @@ public class Item : MonoBehaviour
         if (OnDesUseItem != null)
              OnDesUseItem.Invoke();
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        CheckCraft();
+    }
+
+    private void CheckCraft()
+    {
+        var collders = Physics2D.OverlapCircleAll(transform.position, 5f);
+        List<string> element=new List<string>();
+        foreach (var VARIABLE in collders)
+        {
+            try
+            {
+                element.Add(VARIABLE.GetComponent<Item>().ItemName);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+        if (element.Count > 1)
+        {
+           CraftManager.INS.Craft(element);
+        }
+        
+    }
+
 }

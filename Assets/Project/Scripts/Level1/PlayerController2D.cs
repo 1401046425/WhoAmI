@@ -81,8 +81,10 @@ public class PlayerController2D : CharacterController2D
             return;
         if (_item.ItemName == TakeItem.GetComponent<Item>().ItemName)
         {
+            OnActionEvent.RemoveListener(_item.OnUse);
             TakeItem = null;
         }
+
     }//拿出物品
     private void ClearTakeItem()
     {
@@ -91,13 +93,15 @@ public class PlayerController2D : CharacterController2D
         OnActionEvent.RemoveAllListeners();
         TakeItem.transform.SetParent(null);
         TakeItem.gameObject.SetActive(false);
-        TakeItem.transform.localScale = Vector3.one;
         TakeItem = null;
     }//清空手中物品
     void ShowSlectItem(Item _item)
     {
         if (_item == null)
+        {
+            ClearTakeItem();
             return;
+        }
         if (_item.itemType == ItemType.Hand)
         {
             ClearTakeItem();
