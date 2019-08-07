@@ -1,30 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Playables;
-
-public class TimeLineTrigger : MonoBehaviour
-{
-    bool istrigger = false;
-    [SerializeField] private PlayableDirector m_playableDirector;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (istrigger)
-            return;
-        if (!m_playableDirector)
-            return;
-        m_playableDirector.Play();
-        istrigger = !istrigger;
-    }
-}
+fileFormatVersion: 2
+guid: 43e740fe9b00346a6844a1f2719d609d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

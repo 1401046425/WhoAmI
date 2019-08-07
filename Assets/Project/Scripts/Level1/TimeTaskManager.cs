@@ -51,6 +51,8 @@ public class TimeTaskManager : Singleton<TimeTaskManager>
 
     public void AddPoint()
     {
+        if(NowPlayTask==null)
+            return;
         NowPlayTask.PointCount++;
     }
     

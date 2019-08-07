@@ -527,7 +527,34 @@
           <e p="Font" t="Include">
             <e p="chinese.txt" t="Include" />
           </e>
+          <e p="Material" t="Include">
+            <e p="UIMaterials" t="Include">
+              <e p="UIDynamicMaterials" t="Include">
+                <e p="UIImage_Dynamic_Wave_Circle.shader" t="Include" />
+                <e p="UIImage_Dynamic_Wave_Direction.shader" t="Include" />
+              </e>
+              <e p="UIStaticMaterials" t="Include">
+                <e p="UIImage_Static_Bloom.shader" t="Include" />
+                <e p="UIImage_Static_Bloom_Advanced.shader" t="Include" />
+                <e p="UIImage_Static_Blur.shader" t="Include" />
+                <e p="UIImage_Static_Blur_Advanced.shader" t="Include" />
+                <e p="UIImage_Static_Blur_Focus.shader" t="Include" />
+                <e p="UIImage_Static_Bumps.shader" t="Include" />
+                <e p="UIImage_Static_Gradient.shader" t="Include" />
+                <e p="UIImage_Static_Gray.shader" t="Include" />
+                <e p="UIImage_Static_Outline_Alpha.shader" t="Include" />
+                <e p="UIImage_Static_Relief.shader" t="Include" />
+                <e p="UIImage_Static_Sharp.shader" t="Include" />
+                <e p="UIImage_Static_SpotLight.shader" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Scripts" t="Include">
+            <e p="AlignPuzzle.cs" t="Include" />
+            <e p="AutoFader.cs" t="Include" />
+            <e p="ClickPoint.cs" t="Include" />
+            <e p="CMCameaController.cs" t="Include" />
+            <e p="CMCameraLooker.cs" t="Include" />
             <e p="Common" t="Include">
               <e p="BaseLevelManager.cs" t="Include" />
               <e p="FPSCounter.cs" t="Include" />
@@ -535,7 +562,9 @@
               <e p="ItemManager.cs" t="Include" />
               <e p="OnMouseClick2D.cs" t="Include" />
               <e p="Singleton.cs" t="Include" />
+              <e p="SpriteFX.cs" t="Include" />
             </e>
+            <e p="FadeSpriteObj.cs" t="Include" />
             <e p="Level0" t="Include">
               <e p="BigBang.cs" t="Include" />
               <e p="Level0Manager.cs" t="Include" />
@@ -549,17 +578,19 @@
               <e p="CraftManager.cs" t="Include" />
               <e p="Item.cs" t="Include" />
               <e p="Item_Hand.cs" t="Include" />
-              <e p="Item_Mugun.cs" t="Include" />
+              <e p="Item_Weapon.cs" t="Include" />
               <e p="ItemGrid.cs" t="Include" />
               <e p="ItemGridPanel.cs" t="Include" />
               <e p="ItemIcon.cs" t="Include" />
               <e p="Level1Manager.cs" t="Include" />
               <e p="LockWall.cs" t="Include" />
+              <e p="Pig.cs" t="Include" />
               <e p="PlayerChangeTrigger.cs" t="Include" />
               <e p="PlayerController2D.cs" t="Include" />
               <e p="PlayerManager.cs" t="Include" />
               <e p="PlayerShadow.cs" t="Include" />
               <e p="PosChangerTrigger.cs" t="Include" />
+              <e p="SenceObject.cs" t="Include" />
               <e p="StartTree.cs" t="Include" />
               <e p="TextTrigger.cs" t="Include" />
               <e p="TimeFramePanel.cs" t="Include" />
@@ -578,6 +609,18 @@
               <e p="UI_LevelIcon.cs" t="Include" />
               <e p="UI_Mneu.cs" t="Include" />
             </e>
+            <e p="StoryBlock" t="Include">
+              <e p="StoryBlock.cs" t="Include" />
+              <e p="StoryBlockManager.cs" t="Include" />
+            </e>
+            <e p="UIOpener.cs" t="Include" />
+            <e p="UIPanel" t="Include">
+              <e p="HolyBible.cs" t="Include" />
+              <e p="SuMeiWangBiao.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Shader" t="Include">
+            <e p="GrabPassBlur.shader" t="Include" />
           </e>
           <e p="Text" t="Include">
             <e p="Level0" t="Include">
@@ -612,6 +655,11 @@
           </e>
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+        <e p="UGUIImageShaderPack" t="Include">
+          <e p="Examples" t="Include">
+            <e p="TestController.cs" t="Include" />
           </e>
         </e>
         <e p="UIManager" t="Include">

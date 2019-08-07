@@ -37,6 +37,7 @@ public class TextTrigger : MonoBehaviour
         }
         StopAllCoroutines();
         StartCoroutine(FadeText(1, Textmesh));
+        ISTriggered = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

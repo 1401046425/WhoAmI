@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -32,6 +33,7 @@ public class PlayerManager : Singleton<PlayerManager>
                 PlayerCameras[i].gameObject.SetActive(false);
             }
         }
+        
     }
     public void ChangePlayerPos(int index,Vector2 pos)
     {

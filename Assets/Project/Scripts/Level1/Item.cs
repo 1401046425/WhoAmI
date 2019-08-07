@@ -12,8 +12,11 @@ public class Item : MonoBehaviour
     [SerializeField] public Sprite ItemImage;
     [SerializeField] public bool FreezeRotation;
     [SerializeField] public  bool TimeTaskItem;
+
     [HideInInspector]public bool IsTasked;
+    
     private bool UseRigidBody2D;
+    [SerializeField] private  bool AutoHide;
     [SerializeField] public bool Item_UseRigidBody2D
     {
         get {
@@ -116,6 +119,10 @@ public class Item : MonoBehaviour
         }
         if (FreezeRotation)
             Item_RigidBody2D.freezeRotation = FreezeRotation;
+        if(AutoHide)
+            gameObject.SetActive(false);
+
+
     }
     public virtual void OnMouseDonwItem()
     {
@@ -125,6 +132,12 @@ public class Item : MonoBehaviour
             Item_IsTrigger = true;
         }
     }
+
+    private void RebackToGrid()
+    {
+        ItemManager.INS.AddItemToGrid(this);
+    }
+
     private void OnMouseDown()
     {
         OnMouseDonwItem();
@@ -159,6 +172,7 @@ public class Item : MonoBehaviour
     {
         DesAllEvent();
     }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -200,8 +214,16 @@ public class Item : MonoBehaviour
             }
         }
         if (element.Count > 1)
-        {
-           CraftManager.INS.Craft(element);
+        {var itemname= CraftManager.INS.Craft(element);
+            if (!string.IsNullOrWhiteSpace(itemname))//合成成功
+            {
+                ItemManager.INS.ShowItem(itemname,transform.position);
+                foreach (var VARIABLE in element)
+                {
+                    ItemManager.INS.CloseItem(VARIABLE);
+                }
+                
+            }
         }
         
     }

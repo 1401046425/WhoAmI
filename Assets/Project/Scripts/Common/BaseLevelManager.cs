@@ -15,7 +15,7 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     public TextMeshPro[] InfoText_View;//TextMeshPro文本显示
     public TextMeshProUGUI[] InfoTextUGUI_View;//TextMeshProUI文本显示
     private static AudioSource BGMPlayerINS;
-
+    [SerializeField] private bool IsBGMLoop;
     public AudioSource BGM_Player {
         get {
             if (BGMPlayerINS == null)
@@ -53,6 +53,8 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
         if (BGM_Player.clip == null)
             return;
         BGM_Player.Play();
+        if (IsBGMLoop)
+            BGM_Player.loop = true;
         BGM_Player.transform.name= string.Format("BGMAudioPlayer-{0}",clip.name);
     }
     /// <summary>
@@ -77,6 +79,8 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
         if (BGM_Player.clip == null)
             return;
         BGM_Player.Play();
+        if (IsBGMLoop)
+            BGM_Player.loop = true;
         BGM_Player.transform.name = string.Format("BGMAudioPlayer-{0}", clip.name);
     }
     /// <summary>
@@ -96,6 +100,8 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
         if (BGM_Player.clip == null)
             return;
         BGM_Player.Play();
+        if (IsBGMLoop)
+            BGM_Player.loop = true;
         BGM_Player.transform.name = string.Format("BGMAudioPlayer-{0}", clip.name);
     }
     /// <summary>
@@ -211,6 +217,16 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
         director.Play();
     }
 
+    public void WaitCall(Action CallBack, float time)
+    {
+        StartCoroutine(DelayedCall(CallBack, time));
+    }
+
+    private IEnumerator DelayedCall(Action CallBack, float time)
+    {
+        yield return new  WaitForSecondsRealtime(time);
+        CallBack?.Invoke();
+    }
     /// <summary>
     /// 退出关卡
     /// </summary>

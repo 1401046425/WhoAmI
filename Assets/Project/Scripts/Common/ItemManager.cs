@@ -7,8 +7,7 @@ public class ItemManager : Singleton<ItemManager>
 {
   [HideInInspector] public ItemGrid Item_Grid;
   [SerializeField] private List<ItemData> AllItem=new List<ItemData>();
-
-    public UnityAction<Item> OnItemDown;
+  public UnityAction<Item> OnItemDown;
     public UnityAction<Item> OnItemUp;
     private void Awake()
     {
@@ -19,6 +18,11 @@ public class ItemManager : Singleton<ItemManager>
         }
 
         Item_Grid.OnItemAdd += CheckTimeTaskItem;
+    }
+
+    public void ReBackAllItem()
+    {
+
     }
     public Item TakeItemfromGrid(string ItemName)
     {
@@ -98,6 +102,17 @@ public class ItemManager : Singleton<ItemManager>
         }
         return null;
     }
+    public ItemData GetItemFromManager(string _itemname)
+    {
+        foreach (var item in AllItem)
+        {
+            if (item.item.ItemName == _itemname)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
     public Item GetItemFromGrid(string Name)
     {
         foreach (var item in ItemGrid.INS._Grid)
@@ -108,6 +123,24 @@ public class ItemManager : Singleton<ItemManager>
             }
         }
         return null;
+    }
+
+    public void ShowItem(string ItemName)
+    {
+        GetItemFromManager(ItemName).item.gameObject.SetActive(true);
+    }
+    public void ShowItem(string ItemName,Vector2 Pos)
+    {
+        var  Getitem= GetItemFromManager(ItemName).item;
+        Getitem.gameObject.SetActive(true);
+        Getitem.transform.position = Pos;
+
+    }
+    public void CloseItem(string ItemName)
+    {
+        var  Getitem= GetItemFromManager(ItemName).item;
+         Getitem.gameObject.SetActive(false);
+         
     }
 }
  public class ItemData

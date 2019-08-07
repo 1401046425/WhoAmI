@@ -21,5 +21,6 @@ public class PosChangerTrigger : MonoBehaviour
     {
         if(collision.transform.CompareTag("Player"))
         PlayerManager.INS.ChangePlayerPos(PlayerIndex, Pos);
+        ItemManager.INS.ReBackAllItem();
     }
 }
