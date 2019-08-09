@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: UIImage_Static_Outline_Alpha_Decay
   m_Shader: {fileID: 4800000, guid: aab189ad51b0aa44d97d68b6edda68ed, type: 3}
-  m_ShaderKeywords: DecayImage _EMISSION
+  m_ShaderKeywords: DecayImage ETC1_EXTERNAL_ALPHA _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

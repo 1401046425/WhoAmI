@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using Lean.Touch;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,6 +37,11 @@ public class AlignPuzzle : MonoBehaviour
     {
         transform.position = center;
     }
+    [ContextMenu("设置当前坐标为拼图点")]
+    void SetPuzzle()
+    {
+        center=transform.position;
+    }
     private void OnMouseDrag()
     {
         // print(Input.mousePosition.x + "     y  " + Input.mousePosition.y + "     z  " + Input.mousePosition.z);
@@ -67,12 +73,26 @@ public class AlignPuzzle : MonoBehaviour
 
         if (pos.sqrMagnitude > 3)
         {
-            if (UseY)
+            if (Application.platform == RuntimePlatform.Android)
             {
-                myTransform.position = LastPosition+new Vector3(pos.x+pos.normalized.x*pos.magnitude,pos.y+pos.normalized.y*pos.magnitude,0)*Time.fixedDeltaTime;
+                if (UseY)
+                {
+                    myTransform.position = LastPosition+new Vector3(pos.x,pos.y,0)*Time.fixedDeltaTime;
+                }
+                else
+                    myTransform.position = LastPosition+new Vector3(pos.x,myTransform.position.y,0)*Time.fixedDeltaTime;
             }
             else
-                myTransform.position = LastPosition+new Vector3(pos.x+pos.normalized.x*pos.magnitude,myTransform.position.y,0)*Time.fixedDeltaTime;
+            {
+                if (UseY)
+                {
+                    myTransform.position = LastPosition+new Vector3(pos.x+pos.normalized.x*pos.magnitude,pos.y+pos.normalized.y*pos.magnitude,0)*Time.fixedDeltaTime;
+                }
+                else
+                    myTransform.position = LastPosition+new Vector3(pos.x+pos.normalized.x*pos.magnitude,myTransform.position.y,0)*Time.fixedDeltaTime;
+            }
+
+           
         }
 
 
@@ -93,14 +113,6 @@ public class AlignPuzzle : MonoBehaviour
 
     private void OnMouseUp()
     {
-        try
-        {
-            GetComponent<SpriteRenderer>().sortingOrder = 1;
-        }
-        catch (Exception e)
-        {
-
-        }
         if (UseY)
         {
             if (myTransform.position.x > center.x - radius && myTransform.position.x < center.x + radius)
@@ -127,19 +139,19 @@ public class AlignPuzzle : MonoBehaviour
         
         if (myTransform.position.y > (Radiuscenter + PuzzleRadius).y)
         {
-            myTransform.position=new Vector2(myTransform.position.x,(Radiuscenter+PuzzleRadius).y);
+            myTransform.position=new Vector2(myTransform.position.x,(Radiuscenter+PuzzleRadius).y-1);
         }
         if (myTransform.position.y < (Radiuscenter - PuzzleRadius).y)
         {
-            myTransform.position=new Vector2(myTransform.position.x, (Radiuscenter - PuzzleRadius).y);
+            myTransform.position=new Vector2(myTransform.position.x, (Radiuscenter - PuzzleRadius).y+1);
         }
         if (myTransform.position.x > (Radiuscenter + PuzzleRadius).x)
         {
-            myTransform.position=new Vector2((Radiuscenter+PuzzleRadius).x,myTransform.position.y);
+            myTransform.position=new Vector2((Radiuscenter+PuzzleRadius).x-1,myTransform.position.y);
         }
         if (myTransform.position.x < (Radiuscenter - PuzzleRadius).x)
         {
-            myTransform.position=new Vector2((Radiuscenter-PuzzleRadius).x,myTransform.position.y);
+            myTransform.position=new Vector2((Radiuscenter-PuzzleRadius).x+1,myTransform.position.y);
         }
 
         LastPosition = myTransform.position;

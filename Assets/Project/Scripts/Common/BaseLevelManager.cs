@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -14,26 +15,69 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     public TextAsset[] InfoTextAsset;//文本资源
     public TextMeshPro[] InfoText_View;//TextMeshPro文本显示
     public TextMeshProUGUI[] InfoTextUGUI_View;//TextMeshProUI文本显示
-    private static AudioSource BGMPlayerINS;
     [SerializeField] private bool IsBGMLoop;
-    public AudioSource BGM_Player {
-        get {
-            if (BGMPlayerINS == null)
-            {
-                BGMPlayerINS = new GameObject().AddComponent<AudioSource>();
-                BGMPlayerINS.transform.name = string.Format("BGMAudioPlayer-NullMusic");
-            }
-            return BGMPlayerINS;
+    public AudioSource BGM_Player { get; set; }//背景音乐播放器
+
+    private AudioSource CreateBGM_Player()
+    {
+        if (BGM_Player != null)
+        {
+            StartCoroutine(FadeOutBGM(BGM_Player));
         }
-    }//背景音乐播放器
+        BGM_Player = new GameObject().AddComponent<AudioSource>();
+        BGM_Player.playOnAwake = false;
+        if (IsBGMLoop)
+            BGM_Player.loop = true;
+    BGM_Player.transform.name = string.Format("BGMAudioPlayer-NullMusic");
+    return BGM_Player;
+    }
 
     private void Awake()
     {
 
     }
+
     public void InitLevelManager()
     {
         
+    }
+
+    IEnumerator FadeBGM(AudioSource Audio,AudioClip audioClip,Action callback)
+    {
+        while (Audio.volume>0)
+        {
+            Audio.volume -=  Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        Audio.clip = audioClip;
+            callback.Invoke();
+        Audio.volume = 0;
+        while (Audio.volume<1)
+        {
+            Audio.volume += Time.fixedDeltaTime;   
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+    IEnumerator FadeOutBGM(AudioSource Audio)
+    {
+        while (Audio.volume>0)
+        {
+            Audio.volume -=  Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        Destroy(Audio.gameObject);
+    }
+    IEnumerator FadeInBGM(AudioSource Audio,AudioClip audioClip,Action callback)
+    {
+        Audio.clip = audioClip;
+        callback.Invoke();
+        Audio.volume = 0;
+        while (Audio.volume<1)
+        {
+            Audio.volume += Time.fixedDeltaTime;   
+            yield return new WaitForFixedUpdate();
+        }
     }
     /// <summary>
     /// 播放背景音乐
@@ -41,20 +85,13 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     /// <param name="Number"关卡管理器中的音乐序号></param>
     public void PlayBGM(int Number)
     {
-
-        if (BGM_Player == null)
-            return;
-        if (BGM_Player.isPlaying)
-            BGM_Player.Stop();
         if (BackGroundMusics.Length < Number)
             return;
         var clip = BackGroundMusics[Number];
-        BGM_Player.clip = clip;
-        if (BGM_Player.clip == null)
+        if (clip == null)
             return;
-        BGM_Player.Play();
-        if (IsBGMLoop)
-            BGM_Player.loop = true;
+        StartCoroutine( FadeInBGM(CreateBGM_Player(),clip,BGM_Player.Play));
+
         BGM_Player.transform.name= string.Format("BGMAudioPlayer-{0}",clip.name);
     }
     /// <summary>
@@ -63,10 +100,7 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     /// <param name="Name">关卡管理器中的音乐名称</param>
     public void PlayBGM(string Name)
     {
-        if (BGM_Player == null)
-            return;
-        if (BGM_Player.isPlaying)
-            BGM_Player.Stop();
+
         AudioClip clip = null;
         foreach (var item in BackGroundMusics)
         {
@@ -75,12 +109,9 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
                 clip = item;
             }
         }
-        BGM_Player.clip = clip;
-        if (BGM_Player.clip == null)
+        if (clip == null)
             return;
-        BGM_Player.Play();
-        if (IsBGMLoop)
-            BGM_Player.loop = true;
+        StartCoroutine( FadeInBGM(CreateBGM_Player(),clip,BGM_Player.Play));
         BGM_Player.transform.name = string.Format("BGMAudioPlayer-{0}", clip.name);
     }
     /// <summary>
@@ -89,19 +120,9 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     /// <param name="clip">音乐Clip</param>
     public void PlayBGM(AudioClip clip)
     {
-        if (BGM_Player == null)
+        if (clip == null)
             return;
-        if (BGM_Player.isPlaying)
-            BGM_Player.Stop();
-
-        if (clip = null)
-            return;
-        BGM_Player.clip = clip;
-        if (BGM_Player.clip == null)
-            return;
-        BGM_Player.Play();
-        if (IsBGMLoop)
-            BGM_Player.loop = true;
+        StartCoroutine( FadeInBGM(CreateBGM_Player(),clip,BGM_Player.Play));
         BGM_Player.transform.name = string.Format("BGMAudioPlayer-{0}", clip.name);
     }
     /// <summary>

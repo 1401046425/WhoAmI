@@ -31,10 +31,20 @@ public class StoryBlockManager : Singleton<StoryBlockManager>
    private void Start()
    {
        PlayNextBlock();
+       //JumpBlock(16);
+   }
+
+   public void JumpBlock(int Index)
+   {  NowPlayingBlock.OnExit();
+       PlayBlockIndex = Index;
+       NowPlayingBlock = StoryBlocks[_PlayBlockIndex];
+       NowPlayingBlock.OnEnter();
    }
 
    public void PlayNextBlock()//播放下一个故事区块
    {
+       if(_PlayBlockIndex>StoryBlocks.Count)
+           return;
        PlayBlockIndex++;
        NowPlayingBlock = StoryBlocks[_PlayBlockIndex];
        NowPlayingBlock.OnEnter();

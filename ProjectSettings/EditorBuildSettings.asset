@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Project/Scenes/1.Primitiveworld.unity
-    guid: 1c0bab184ab9c4f7a97483c7e98afe4e
+  - enabled: 0
+    path: Assets/Project/Scenes/New Scene.unity
+    guid: ac7769c556a7a482bad1645359db2a3e
   m_configObjects: {}

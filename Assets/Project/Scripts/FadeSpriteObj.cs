@@ -18,7 +18,9 @@ public class FadeSpriteObj : MonoBehaviour
   {
     if (index < m_Sprites.Count)
     {
-      Renderer2.sprite = Renderer1.sprite;
+      if(Renderer1.color.a<1)
+        return;
+        Renderer2.sprite = Renderer1.sprite;
       Renderer1.sprite = null;
       SpriteFX._S.FadeinSprite(m_Sprites[index],Renderer1,FadeSpeed);
      SpriteFX._S.FadeoutSprite(null,Renderer2,FadeSpeed);
@@ -29,7 +31,6 @@ public class FadeSpriteObj : MonoBehaviour
         
       }
     }
-
 
   }
 }
