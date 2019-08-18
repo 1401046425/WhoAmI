@@ -9,6 +9,7 @@ public class UIOpener : MonoBehaviour
     [SerializeField]
     private string UIName;
 
+    [SerializeField] private bool OpenAwake;
     private void OnMouseDown()
     {
         if(UIManager.GetPanel(UIName)==null)
@@ -19,5 +20,11 @@ public class UIOpener : MonoBehaviour
     {
         if(UIManager.GetPanel(UIName)==null)
             UIManager.ShowPanel(UIName);
+    }
+
+    private void Awake()
+    {
+        if(OpenAwake)
+            OPenUIPanel();
     }
 }

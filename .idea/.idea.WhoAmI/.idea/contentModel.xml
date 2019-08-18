@@ -181,6 +181,16 @@
             </e>
           </e>
         </e>
+        <e p="MobileColorGrading" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="LB_LightingTrigger_Direct.cs" t="Include" />
+            <e p="LB_LightingTrigger_Profile.cs" t="Include" />
+            <e p="MobileColorGrading.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="MobileColorGrading.shader" t="Include" />
+          </e>
+        </e>
         <e p="Plugins" t="Include">
           <e p="Easy Save 2" t="Include">
             <e p="Editor" t="Include">
@@ -630,7 +640,10 @@
           <e p="Scripts" t="Include">
             <e p="AlignPuzzle.cs" t="Include" />
             <e p="AutoFader.cs" t="Include" />
+            <e p="BackMenu.cs" t="Include" />
+            <e p="CameraOrthographic.cs" t="Include" />
             <e p="CheckProgress.cs" t="Include" />
+            <e p="CheckTransForm.cs" t="Include" />
             <e p="ClickPoint.cs" t="Include" />
             <e p="CMCameaController.cs" t="Include" />
             <e p="CMCameraLooker.cs" t="Include" />
@@ -643,7 +656,14 @@
               <e p="Singleton.cs" t="Include" />
               <e p="SpriteFX.cs" t="Include" />
             </e>
+            <e p="EndPanel.cs" t="Include" />
+            <e p="FadeIn.cs" t="Include" />
+            <e p="Fader.cs" t="Include" />
             <e p="FadeSpriteObj.cs" t="Include" />
+            <e p="InfinityObj.cs" t="Include" />
+            <e p="InfinityObjMain.cs" t="Include" />
+            <e p="Init.cs" t="Include" />
+            <e p="JudgeDraw.cs" t="Include" />
             <e p="Level0" t="Include">
               <e p="BigBang.cs" t="Include" />
               <e p="Level0Manager.cs" t="Include" />
@@ -682,19 +702,34 @@
               <e p="TimeTaskWall.cs" t="Include" />
               <e p="Trigger.cs" t="Include" />
             </e>
+            <e p="LevelOpener.cs" t="Include" />
+            <e p="MainBookManager.cs" t="Include" />
             <e p="Menu" t="Include">
+              <e p="Level1EndPanel.cs" t="Include" />
               <e p="MenuManager.cs" t="Include" />
               <e p="UI_Level.cs" t="Include" />
               <e p="UI_LevelIcon.cs" t="Include" />
               <e p="UI_Mneu.cs" t="Include" />
             </e>
+            <e p="MutualObj.cs" t="Include" />
+            <e p="OpenLink.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+            <e p="ReStart.cs" t="Include" />
+            <e p="RotatePuzzle.cs" t="Include" />
             <e p="StoryBlock" t="Include">
               <e p="StoryBlock.cs" t="Include" />
               <e p="StoryBlockManager.cs" t="Include" />
             </e>
+            <e p="StoryBlockTester.cs" t="Include" />
+            <e p="Tenbinary.cs" t="Include" />
+            <e p="TextChanger.cs" t="Include" />
+            <e p="TransBiger.cs" t="Include" />
             <e p="UIOpener.cs" t="Include" />
             <e p="UIPanel" t="Include">
+              <e p="FadeInPanel.cs" t="Include" />
+              <e p="FadeOutPanel.cs" t="Include" />
               <e p="HolyBible.cs" t="Include" />
+              <e p="StartPanel.cs" t="Include" />
               <e p="SuMeiWangBiao.cs" t="Include" />
             </e>
             <e p="WaitInvoke.cs" t="Include" />
@@ -707,6 +742,35 @@
               <e p="序章[世界的本源].txt" t="Include" />
               <e p="序章[我是谁].txt" t="Include" />
             </e>
+            <e p="Level1" t="Include">
+              <e p="DNA报告.txt" t="Include" />
+              <e p="Start.txt" t="Include" />
+              <e p="SuMeiWangBiaoInfo.txt" t="Include" />
+              <e p="SuMeiWangBiaoInfo2.txt" t="Include" />
+              <e p="SuMeiWangBiaoInfo3.txt" t="Include" />
+              <e p="SuMeiWangBiaoInfo4.txt" t="Include" />
+              <e p="SuMeiWangBiaoInfo5.txt" t="Include" />
+              <e p="大洪水.txt" t="Include" />
+              <e p="尼比鲁.txt" t="Include" />
+              <e p="尼比鲁2.txt" t="Include" />
+              <e p="尼比鲁3.txt" t="Include" />
+              <e p="尼比鲁4.txt" t="Include" />
+              <e p="尼比鲁5.txt" t="Include" />
+              <e p="开采矿物.txt" t="Include" />
+              <e p="恩利尔.txt" t="Include" />
+              <e p="恩基.txt" t="Include" />
+              <e p="提取DNA.txt" t="Include" />
+              <e p="离开地球.txt" t="Include" />
+              <e p="苏美文明.txt" t="Include" />
+              <e p="苏美文明2.txt" t="Include" />
+              <e p="西琴.txt" t="Include" />
+              <e p="诺亚方舟.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Room" t="Include">
+          <e p="Settings" t="Include">
+            <e p="Note.txt" t="Include" />
           </e>
         </e>
         <e p="ScratchCard" t="Include">

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AutoFader : MonoBehaviour
 {
     [SerializeField] private List<Sprite> m_Sprites;
-    [SerializeField] private float FadeSpeed;
+    [SerializeField] private float FadeSpeed=1;
     [SerializeField] private float WaitTime;
     [SerializeField] private SpriteRenderer Renderer1;
     [SerializeField] private SpriteRenderer Renderer2;

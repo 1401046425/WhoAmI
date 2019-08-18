@@ -125,6 +125,14 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
         StartCoroutine( FadeInBGM(CreateBGM_Player(),clip,BGM_Player.Play));
         BGM_Player.transform.name = string.Format("BGMAudioPlayer-{0}", clip.name);
     }
+/// <summary>
+/// 关闭背景音乐
+/// </summary>
+    public void StopBGM()
+    {
+        StartCoroutine( FadeOutBGM(BGM_Player));
+    }
+
     /// <summary>
     /// 播放音效
     /// </summary>

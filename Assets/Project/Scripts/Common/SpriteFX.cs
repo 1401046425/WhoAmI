@@ -1,4 +1,5 @@
 
+    using System;
     using System.Collections;
     using UnityEngine;
 
@@ -30,6 +31,14 @@
         public void FadeoutSprite(Sprite Sprite,SpriteRenderer Renderer,float Speed)
         {
             StartCoroutine(FadeOutSprite(Sprite,Renderer,Speed));
+        }
+        public void FadeinSprite(Sprite Sprite,SpriteRenderer Renderer,float Speed,Action callback)
+        {
+            StartCoroutine(FadeInSprite(Sprite,Renderer,Speed,callback));
+        }
+        public void FadeoutSprite(Sprite Sprite,SpriteRenderer Renderer,float Speed,Action callback)
+        {
+            StartCoroutine(FadeOutSprite(Sprite,Renderer,Speed,callback));
         }
         IEnumerator FadeInOutSprite(Sprite Sprite,SpriteRenderer Renderer,float Speed)
         {
@@ -102,6 +111,50 @@
                 yield return new WaitForFixedUpdate();
             }
             Renderer.sprite = Sprite;
+        }
+        IEnumerator FadeInSprite(Sprite Sprite,SpriteRenderer Renderer,float Speed,Action CallBack)
+        {
+            if (!Renderer)
+                yield return null;
+            if (Sprite)
+                yield return null;
+            Renderer.color = new Color(Renderer.color.r,
+                Renderer.color.g,
+                Renderer.color.b,
+                0);
+            Renderer.sprite = Sprite;
+            while (Renderer.color.a < 1)
+            {
+                Renderer.color = new Color(
+                    Renderer.color.r,
+                    Renderer.color.g,
+                    Renderer.color.b,
+                    Renderer.color.a + Time.fixedDeltaTime*Speed);
+                yield return new WaitForFixedUpdate();
+            }
+            CallBack?.Invoke();
+        }
+        IEnumerator FadeOutSprite(Sprite Sprite,SpriteRenderer Renderer,float Speed,Action CallBack)
+        {
+            if (!Renderer)
+                yield return null;
+            if (Sprite)
+                yield return null;
+            Renderer.color = new Color(Renderer.color.r,
+                Renderer.color.g,
+                Renderer.color.b,
+                1);
+            while (Renderer.color.a > 0)
+            {
+                Renderer.color = new Color(
+                    Renderer.color.r,
+                    Renderer.color.g,
+                    Renderer.color.b,
+                    Renderer.color.a - Time.fixedDeltaTime*Speed);
+                yield return new WaitForFixedUpdate();
+            }
+            Renderer.sprite = Sprite;
+            CallBack?.Invoke();
         }
         
     }

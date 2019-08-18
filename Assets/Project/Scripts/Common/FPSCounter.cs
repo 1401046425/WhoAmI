@@ -26,9 +26,11 @@ public class FPSCounter : MonoBehaviour
     //GUI 的样式
     private GUIStyle style;
 
+   //[SerializeField] private int FPSLimit=60;
+
     private void Awake()
     {
-        Application.targetFrameRate = 30;
+       // Application.targetFrameRate = FPSLimit;
     }
     void Start()
     {

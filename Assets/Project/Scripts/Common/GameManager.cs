@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Action OnGameInit;
 
     public bool IsFirstEnterGameToday;
+    [HideInInspector] private string LastEnterLevelName;
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -19,7 +20,7 @@ public class GameManager : Singleton<GameManager>
     {
         OnGameInit += InitunLockedLevel;
         OnGameInit();
-        SceneManager.LoadSceneAsync("Menu");
+        SceneManager.LoadSceneAsync("Lobby");
         IsFirstEnterGameToday = true;
     }
     private List<string> unLockedLevelName=new List<string>();
@@ -59,10 +60,17 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void StartLevel(string LevelName)
     {
-        SceneManager.LoadSceneAsync(LevelName);
+	    LastEnterLevelName = LevelName;
+	    SceneManager.LoadSceneAsync(LevelName);
     }
+
+    public void RestartLastLevel()
+    {
+	    SceneManager.LoadSceneAsync(LastEnterLevelName);
+    }
+
     public void QuitLevel()
     {
-        SceneManager.LoadSceneAsync("Menu");
+        SceneManager.LoadSceneAsync("Lobby");
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 public class StoryBlockManager : Singleton<StoryBlockManager>
@@ -26,6 +27,14 @@ public class StoryBlockManager : Singleton<StoryBlockManager>
        }
 
        return null;
+   }
+
+   private void Awake()
+   {
+       foreach (var VARIABLE in StoryBlocks)
+       {
+           VARIABLE.OnInit();
+       }
    }
 
    private void Start()
@@ -66,5 +75,10 @@ public class StoryBlockManager : Singleton<StoryBlockManager>
    {
        yield return new  WaitForSecondsRealtime(time);
        CallBack?.Invoke();
+   }
+
+   public void EndStoryBlock()
+   {
+       SceneManager.LoadSceneAsync("Menu");
    }
 }

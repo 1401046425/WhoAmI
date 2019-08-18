@@ -28,7 +28,6 @@ public class FadeSpriteObj : MonoBehaviour
       if (index >= m_Sprites.Count)
       {
         OnFadeFinish?.Invoke();
-        
       }
     }
 

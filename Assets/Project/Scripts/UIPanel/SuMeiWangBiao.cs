@@ -24,6 +24,6 @@ public class SuMeiWangBiao : BaseUIPanel
             return;
         UIManager.FadeOutFX(this.gameObject, 0.01f, 0.02f, base.Close);
         IsClose = true;
-        StoryBlockManager.INS.StopNowBlock(1f);
+        StoryBlockManager.INS.StopNowBlock();
     }
 }
