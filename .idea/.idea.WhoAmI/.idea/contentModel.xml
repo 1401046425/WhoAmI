@@ -707,6 +707,7 @@
             <e p="Menu" t="Include">
               <e p="Level1EndPanel.cs" t="Include" />
               <e p="MenuManager.cs" t="Include" />
+              <e p="PausePanel.cs" t="Include" />
               <e p="UI_Level.cs" t="Include" />
               <e p="UI_LevelIcon.cs" t="Include" />
               <e p="UI_Mneu.cs" t="Include" />
@@ -765,6 +766,7 @@
               <e p="苏美文明2.txt" t="Include" />
               <e p="西琴.txt" t="Include" />
               <e p="诺亚方舟.txt" t="Include" />
+              <e p="造人.txt" t="Include" />
             </e>
           </e>
         </e>

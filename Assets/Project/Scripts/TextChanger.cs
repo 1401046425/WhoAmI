@@ -33,8 +33,8 @@ private void InitInfo()
 
     private void OnMouseDown()
     {
-
-
+        if(GameManager.INS.Status==GameStatus.Pause)
+            return;
         if(!Canclick)
             return;
         if (index < Infos.Length)

@@ -12,7 +12,7 @@ public class LevelOpener : MonoBehaviour,IPointerClickHandler
     [SerializeField] private float waittime;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(!MainBookManager.INS.interactable)
+        if(!MainBookManager._S.interactable)
             return;
         OnOpen?.Invoke();
         BaseLevelManager.INS.StopBGM();

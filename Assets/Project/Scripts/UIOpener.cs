@@ -18,8 +18,7 @@ public class UIOpener : MonoBehaviour
 
     public void OPenUIPanel()
     {
-        if(UIManager.GetPanel(UIName)==null)
-            UIManager.ShowPanel(UIName);
+        UIManager.ShowPanel(UIName);
     }
 
     private void Awake()

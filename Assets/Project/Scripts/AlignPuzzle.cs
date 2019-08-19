@@ -54,6 +54,8 @@ public class AlignPuzzle : MonoBehaviour {
         center = transform.position;
     }
     private void OnMouseDrag () {
+        if(GameManager.INS.Status==GameStatus.Pause)
+            return;
         if (IsFinish)
             return;
         // print(Input.mousePosition.x + "     y  " + Input.mousePosition.y + "     z  " + Input.mousePosition.z);

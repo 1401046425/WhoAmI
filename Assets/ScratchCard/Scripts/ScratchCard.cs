@@ -115,7 +115,10 @@ public class ScratchCard : MonoBehaviour
 	}
 
 	private void UpdateInput()
-	{      var  selfScenePosition = MainCamera.WorldToScreenPoint(myTransform.position); 
+	{   
+		if(GameManager.INS.Status==GameStatus.Pause)
+			return;
+		var  selfScenePosition = MainCamera.WorldToScreenPoint(myTransform.position); 
 		if (!Input.touchSupported || Input.mousePresent)
 		{
 			if (Input.GetMouseButtonDown(0))

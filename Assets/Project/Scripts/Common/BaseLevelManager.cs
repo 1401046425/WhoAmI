@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
 
-public class BaseLevelManager : Singleton<BaseLevelManager>
+public class BaseLevelManager : MonoBehaviour
 {
     public PlayableDirector[] PLABDirectiors;
     public AudioClip[] BackGroundMusics;//背景音乐Clip
@@ -16,8 +16,9 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     public TextMeshPro[] InfoText_View;//TextMeshPro文本显示
     public TextMeshProUGUI[] InfoTextUGUI_View;//TextMeshProUI文本显示
     [SerializeField] private bool IsBGMLoop;
+    public static BaseLevelManager INS;
     public AudioSource BGM_Player { get; set; }//背景音乐播放器
-
+private Dictionary<string,AudioSource>SoundPlayer=new Dictionary<string, AudioSource>();
     private AudioSource CreateBGM_Player()
     {
         if (BGM_Player != null)
@@ -34,7 +35,7 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
 
     private void Awake()
     {
-
+        INS = this;
     }
 
     public void InitLevelManager()
@@ -58,7 +59,25 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
             yield return new WaitForFixedUpdate();
         }
     }
-
+    IEnumerator PauseBGM(AudioSource Audio)
+    {
+        while (Audio.volume>0)
+        {
+            Audio.volume -=  0.03f;
+            yield return new WaitForSecondsRealtime(0.03f);
+        }
+        Audio.Pause();
+    }
+    IEnumerator UnPauseBGM(AudioSource Audio)
+    {
+        Audio.volume = 0;
+        while (Audio.volume<1)
+        {
+            Audio.volume += 0.03f;   
+            yield return new WaitForSecondsRealtime(0.03f);
+        }
+        Audio.UnPause();
+    }
     IEnumerator FadeOutBGM(AudioSource Audio)
     {
         while (Audio.volume>0)
@@ -132,35 +151,87 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
     {
         StartCoroutine( FadeOutBGM(BGM_Player));
     }
-
-    /// <summary>
+/// <summary>
+/// 暂停背景音乐
+/// </summary>
+public void PauseBGM()
+ {
+     StartCoroutine(PauseBGM(BGM_Player));
+ }
+public void UnPauseBGM()
+{
+    StartCoroutine(UnPauseBGM(BGM_Player));
+}
+/// <summary>
     /// 播放音效
     /// </summary>
     /// <param name="clip">音效Clip</param>
     public void PlaySound(AudioClip clip)
     {
-        var AudioSoundPlayer = new GameObject().AddComponent<AudioSource>();
+        AudioSource AudioSoundPlayer=null;
+        try
+        {
+            AudioSoundPlayer = SoundPlayer[clip.name];
+        }
+        catch (Exception e)
+        {
+            AudioSoundPlayer  = new GameObject().AddComponent<AudioSource>();
+        }
+         
         AudioSoundPlayer.transform.name = string.Format("AudioSound-{0}", clip.name);
         AudioSoundPlayer.playOnAwake = false;
         AudioSoundPlayer.clip = clip;
         AudioSoundPlayer.Play();
-        Destroy(AudioSoundPlayer.gameObject,clip.length+1);
+        if(!SoundPlayer.ContainsKey(clip.name))
+            SoundPlayer.Add(clip.name,AudioSoundPlayer);
+       // Destroy(AudioSoundPlayer.gameObject,clip.length+1);
     }
+public enum SoundType
+{
+    Playing,
+    Stoped,
+}
+/// <summary>
+/// 获取音效播放状态
+/// </summary>
+/// <param name="Name"></param>
+/// <returns></returns>
+    public SoundType GetSoundState(string Name)
+{
+    if (SoundPlayer.ContainsKey(Name))
+    {
+        var SDPlayer = SoundPlayer[Name];
+        if (SDPlayer.isPlaying)
+            return SoundType.Playing;
+    }
+    return SoundType.Stoped;
+}
+
     /// <summary>
     /// 播放音效
     /// </summary>
     /// <param name="Number">关卡管理器中的音效序号</param>
     public void PlaySound(int Number)
     {
-        var AudioSoundPlayer = new GameObject().AddComponent<AudioSource>();
+
         if (Sounds.Length < Number)
             return;
         var clip = Sounds[Number];
+        AudioSource AudioSoundPlayer=null;
+        try
+        {
+            AudioSoundPlayer = SoundPlayer[clip.name];
+        }
+        catch (Exception e)
+        {
+            AudioSoundPlayer  = new GameObject().AddComponent<AudioSource>();
+        }
         AudioSoundPlayer.transform.name = string.Format("AudioSound-{0}", clip.name);
         AudioSoundPlayer.playOnAwake = false;
         AudioSoundPlayer.clip = clip;
         AudioSoundPlayer.Play();
-        Destroy(AudioSoundPlayer.gameObject, clip.length + 1);
+        if(!SoundPlayer.ContainsKey(clip.name))
+            SoundPlayer.Add(clip.name,AudioSoundPlayer);
     }
     /// <summary>
     /// 播放音效
@@ -178,12 +249,31 @@ public class BaseLevelManager : Singleton<BaseLevelManager>
                 clip = item;
             }
         }
-        var AudioSoundPlayer = new GameObject().AddComponent<AudioSource>();
+        
+        AudioSource AudioSoundPlayer=null;
+        try
+        {
+            AudioSoundPlayer = SoundPlayer[clip.name];
+        }
+        catch (Exception e)
+        {
+            AudioSoundPlayer  = new GameObject().AddComponent<AudioSource>();
+        }
         AudioSoundPlayer.transform.name = string.Format("AudioSound-{0}", clip.name);
         AudioSoundPlayer.playOnAwake = false;
         AudioSoundPlayer.clip = clip;
         AudioSoundPlayer.Play();
-        Destroy(AudioSoundPlayer.gameObject, clip.length + 1);
+        if(!SoundPlayer.ContainsKey(clip.name))
+            SoundPlayer.Add(clip.name,AudioSoundPlayer);
+    }
+/// <summary>
+/// 停止音效
+/// </summary>
+/// <param name="Name"></param>
+    public void StopSound(string Name)
+    {
+        if(SoundPlayer.ContainsKey(Name))
+            SoundPlayer[Name].Stop();
     }
 
     IEnumerator PlayTextInfo(TextMeshPro textMesh, TextAsset infoAsset, Action CallBack)

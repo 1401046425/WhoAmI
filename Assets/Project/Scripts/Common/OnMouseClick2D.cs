@@ -13,6 +13,8 @@ public class OnMouseClick2D : MonoBehaviour
     private bool IsClick;
     private void OnMouseDown()
     {
+        if(GameManager.INS.Status==GameStatus.Pause)
+            return;
         if (JustOnes)
         {
             if (JustOnes)

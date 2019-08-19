@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     private void OnFingerUp(LeanFinger obj)
     {
         InputPos = Vector2.zero;
+        if(BaseLevelManager.INS!=null)
+            BaseLevelManager.INS.StopSound("走路");
     }
 
     private void OnFingerSet(LeanFinger obj)
@@ -69,7 +71,15 @@ public class PlayerController : MonoBehaviour
         {
             if (obj.ScreenDelta.normalized != Vector2.zero)
                 InputPos = obj.ScreenDelta.normalized;
+            if (BaseLevelManager.INS)
+            {
+                if (BaseLevelManager.INS.GetSoundState("走路")==BaseLevelManager.SoundType.Stoped)
+                {
+                    BaseLevelManager.INS.PlaySound("走路");
+                }
+            }
 
+ 
         }
     }
     void FixedUpdate()
@@ -82,6 +92,6 @@ public class PlayerController : MonoBehaviour
         // m_PlayrRigid.velocity = Vector3.SmoothDamp(m_PlayrRigid.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         transform.Translate(new Vector3(InputPos.x, m_PlayrRigid.velocity.y, InputPos.y) * m_MoveSpeed *
                                 Time.fixedDeltaTime);
-        
+  
     }
 }

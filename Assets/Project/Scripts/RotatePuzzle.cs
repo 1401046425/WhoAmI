@@ -37,6 +37,8 @@ public class RotatePuzzle : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if(GameManager.INS.Status==GameStatus.Pause)
+            return;
         if(isFinish)
             return;
         Vector3 currentScenePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, selfScenePosition.z);
