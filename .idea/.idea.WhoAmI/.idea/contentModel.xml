@@ -716,6 +716,7 @@
             <e p="MutualObj.cs" t="Include" />
             <e p="OpenLink.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+            <e p="QuitGame.cs" t="Include" />
             <e p="ReStart.cs" t="Include" />
             <e p="RotatePuzzle.cs" t="Include" />
             <e p="StoryBlock" t="Include">
@@ -735,6 +736,7 @@
               <e p="StartPanel.cs" t="Include" />
               <e p="SuMeiWangBiao.cs" t="Include" />
             </e>
+            <e p="VersionText.cs" t="Include" />
             <e p="WaitInvoke.cs" t="Include" />
           </e>
           <e p="Shader" t="Include">

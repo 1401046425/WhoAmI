@@ -25,7 +25,7 @@ ScriptedImporter:
     streamingMipmaps: 1
     streamingMipmapsPriority: 0
     nPOTScale: 1
-    sRGBTexture: 1
+    sRGBTexture: 0
     spriteMode: 2
     spriteExtrude: 1
     spriteMeshType: 1

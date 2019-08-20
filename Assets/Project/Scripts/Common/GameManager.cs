@@ -26,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;//永远不熄屏
         InitGame();
     }
     public void InitGame()

@@ -1,86 +1,235 @@
 fileFormatVersion: 2
 guid: cd342c9f9a9c8f042bc81f7ce625482b
-timeCreated: 1542056640
-licenseType: Store
 ModelImporter:
-  serializedVersion: 21
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: top roof.000
-    100004: top roof.001
-    100006: top roof.002
-    100008: top roof.003
-    100010: top roof.004
-    100012: top roof.005
-    100014: top roof.006
-    100016: top roof.007
-    100018: top roof.008
-    100020: top roof.009
-    100022: top roof.010
-    100024: top roof.011
-    100026: top roof.012
-    100028: top roof.013
-    400000: //RootNode
-    400002: top roof.000
-    400004: top roof.001
-    400006: top roof.002
-    400008: top roof.003
-    400010: top roof.004
-    400012: top roof.005
-    400014: top roof.006
-    400016: top roof.007
-    400018: top roof.008
-    400020: top roof.009
-    400022: top roof.010
-    400024: top roof.011
-    400026: top roof.012
-    400028: top roof.013
-    2300000: top roof.000
-    2300002: top roof.001
-    2300004: top roof.002
-    2300006: top roof.003
-    2300008: top roof.004
-    2300010: top roof.005
-    2300012: top roof.006
-    2300014: top roof.007
-    2300016: top roof.008
-    2300018: top roof.009
-    2300020: top roof.010
-    2300022: top roof.011
-    2300024: top roof.012
-    2300026: top roof.013
-    3300000: top roof.000
-    3300002: top roof.001
-    3300004: top roof.002
-    3300006: top roof.003
-    3300008: top roof.004
-    3300010: top roof.005
-    3300012: top roof.006
-    3300014: top roof.007
-    3300016: top roof.008
-    3300018: top roof.009
-    3300020: top roof.010
-    3300022: top roof.011
-    3300024: top roof.012
-    3300026: top roof.013
-    4300000: top roof.013
-    4300002: top roof.012
-    4300004: top roof.011
-    4300006: top roof.010
-    4300008: top roof.009
-    4300010: top roof.008
-    4300012: top roof.007
-    4300014: top roof.006
-    4300016: top roof.005
-    4300018: top roof.004
-    4300020: top roof.003
-    4300022: top roof.000
-    4300024: top roof.002
-    4300026: top roof.001
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: top roof.000
+  - first:
+      1: 100004
+    second: top roof.001
+  - first:
+      1: 100006
+    second: top roof.002
+  - first:
+      1: 100008
+    second: top roof.003
+  - first:
+      1: 100010
+    second: top roof.004
+  - first:
+      1: 100012
+    second: top roof.005
+  - first:
+      1: 100014
+    second: top roof.006
+  - first:
+      1: 100016
+    second: top roof.007
+  - first:
+      1: 100018
+    second: top roof.008
+  - first:
+      1: 100020
+    second: top roof.009
+  - first:
+      1: 100022
+    second: top roof.010
+  - first:
+      1: 100024
+    second: top roof.011
+  - first:
+      1: 100026
+    second: top roof.012
+  - first:
+      1: 100028
+    second: top roof.013
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: top roof.000
+  - first:
+      4: 400004
+    second: top roof.001
+  - first:
+      4: 400006
+    second: top roof.002
+  - first:
+      4: 400008
+    second: top roof.003
+  - first:
+      4: 400010
+    second: top roof.004
+  - first:
+      4: 400012
+    second: top roof.005
+  - first:
+      4: 400014
+    second: top roof.006
+  - first:
+      4: 400016
+    second: top roof.007
+  - first:
+      4: 400018
+    second: top roof.008
+  - first:
+      4: 400020
+    second: top roof.009
+  - first:
+      4: 400022
+    second: top roof.010
+  - first:
+      4: 400024
+    second: top roof.011
+  - first:
+      4: 400026
+    second: top roof.012
+  - first:
+      4: 400028
+    second: top roof.013
+  - first:
+      23: 2300000
+    second: top roof.000
+  - first:
+      23: 2300002
+    second: top roof.001
+  - first:
+      23: 2300004
+    second: top roof.002
+  - first:
+      23: 2300006
+    second: top roof.003
+  - first:
+      23: 2300008
+    second: top roof.004
+  - first:
+      23: 2300010
+    second: top roof.005
+  - first:
+      23: 2300012
+    second: top roof.006
+  - first:
+      23: 2300014
+    second: top roof.007
+  - first:
+      23: 2300016
+    second: top roof.008
+  - first:
+      23: 2300018
+    second: top roof.009
+  - first:
+      23: 2300020
+    second: top roof.010
+  - first:
+      23: 2300022
+    second: top roof.011
+  - first:
+      23: 2300024
+    second: top roof.012
+  - first:
+      23: 2300026
+    second: top roof.013
+  - first:
+      33: 3300000
+    second: top roof.000
+  - first:
+      33: 3300002
+    second: top roof.001
+  - first:
+      33: 3300004
+    second: top roof.002
+  - first:
+      33: 3300006
+    second: top roof.003
+  - first:
+      33: 3300008
+    second: top roof.004
+  - first:
+      33: 3300010
+    second: top roof.005
+  - first:
+      33: 3300012
+    second: top roof.006
+  - first:
+      33: 3300014
+    second: top roof.007
+  - first:
+      33: 3300016
+    second: top roof.008
+  - first:
+      33: 3300018
+    second: top roof.009
+  - first:
+      33: 3300020
+    second: top roof.010
+  - first:
+      33: 3300022
+    second: top roof.011
+  - first:
+      33: 3300024
+    second: top roof.012
+  - first:
+      33: 3300026
+    second: top roof.013
+  - first:
+      43: 4300000
+    second: top roof.013
+  - first:
+      43: 4300002
+    second: top roof.012
+  - first:
+      43: 4300004
+    second: top roof.011
+  - first:
+      43: 4300006
+    second: top roof.010
+  - first:
+      43: 4300008
+    second: top roof.009
+  - first:
+      43: 4300010
+    second: top roof.008
+  - first:
+      43: 4300012
+    second: top roof.007
+  - first:
+      43: 4300014
+    second: top roof.006
+  - first:
+      43: 4300016
+    second: top roof.005
+  - first:
+      43: 4300018
+    second: top roof.004
+  - first:
+      43: 4300020
+    second: top roof.003
+  - first:
+      43: 4300022
+    second: top roof.000
+  - first:
+      43: 4300024
+    second: top roof.002
+  - first:
+      43: 4300026
+    second: top roof.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: top_roof_wood.008
+    second: {fileID: 2100000, guid: 767e976b0e2c9b64db2711dc92d7400a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -93,6 +242,8 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -105,8 +256,10 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -114,9 +267,14 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -127,10 +285,14 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -140,8 +302,8 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
