@@ -12,6 +12,7 @@ public class MainBookManager : MonoBehaviour
   {
     _S = this;
     UpdateLevel();
+    GameManager.INS.UnPauseGame();
   }
 
   public bool interactable
@@ -25,6 +26,5 @@ public class MainBookManager : MonoBehaviour
     var Index = GameManager.INS.GetAllUnLockLevelName().Count;
     Book.currentPaper = Index;
     Book.EndFlippingPaper = Index-1;
-    Debug.Log(GameManager.INS.GetAllUnLockLevelName().Count);
   }
 }

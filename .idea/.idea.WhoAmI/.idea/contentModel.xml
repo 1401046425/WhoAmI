@@ -642,6 +642,7 @@
             <e p="AutoFader.cs" t="Include" />
             <e p="BackMenu.cs" t="Include" />
             <e p="CameraOrthographic.cs" t="Include" />
+            <e p="CheckIsEnteredGame.cs" t="Include" />
             <e p="CheckProgress.cs" t="Include" />
             <e p="CheckTransForm.cs" t="Include" />
             <e p="ClickPoint.cs" t="Include" />
@@ -724,6 +725,7 @@
             <e p="StoryBlockTester.cs" t="Include" />
             <e p="Tenbinary.cs" t="Include" />
             <e p="TextChanger.cs" t="Include" />
+            <e p="TextLevelCheck.cs" t="Include" />
             <e p="TransBiger.cs" t="Include" />
             <e p="UIOpener.cs" t="Include" />
             <e p="UIPanel" t="Include">

@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     {
         if (GameManager.INS == null)
             return;
-        if (GameManager.INS.IsFirstEnterGameToday)
+        if (GameManager.INS.IsEnterGame)
         {
            UIManager.ShowPanel("StartMenu");
         }

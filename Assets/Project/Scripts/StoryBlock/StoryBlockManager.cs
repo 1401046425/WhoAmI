@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
-public class StoryBlockManager : Singleton<StoryBlockManager>
+public class StoryBlockManager : MonoBehaviour
 {
    public List<StoryBlock> StoryBlocks=new List<StoryBlock>();
    private StoryBlock NowPlayingBlock;//当前播放的区块
@@ -18,6 +18,7 @@ public class StoryBlockManager : Singleton<StoryBlockManager>
        get { return PlayBlockIndex; }
    }
 
+   public  static  StoryBlockManager INS;
    public StoryBlock GetBlock(string Name)//获取故事区块
    {
        foreach (var VARIABLE in StoryBlocks)
@@ -31,6 +32,7 @@ public class StoryBlockManager : Singleton<StoryBlockManager>
 
    private void Awake()
    {
+       INS = this;
        foreach (var VARIABLE in StoryBlocks)
        {
            VARIABLE.OnInit();

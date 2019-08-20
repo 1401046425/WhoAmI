@@ -7,16 +7,24 @@ using UnityEngine;
 
 public class PausePanel : BaseUIPanel
 {
+    private bool HasClose;
     internal override void OnShow()
     {
-        BaseLevelManager.INS.PauseBGM();
+        HasClose = false;
         UIManager.FadeInFX(this.gameObject,0.01f,0.05f,GameManager.INS.PauseGame);
     }
     
     public override void Close()
     {
+        if(HasClose)
+            return;
+        UIManager.FadeOutFX(this.gameObject, 0.01f, 0.05f, ClosePanel);
+        HasClose = true;
+    }
+
+    private void ClosePanel()
+    {
         GameManager.INS.UnPauseGame();
-        BaseLevelManager.INS.UnPauseBGM();
-        UIManager.FadeOutFX(this.gameObject, 0.01f, 0.02f, base.Close);
+         UIManager.ClosePanel(this);
     }
 }

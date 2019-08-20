@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UIFrameWork;
+using UIFrameWork.BasePanel;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,13 +27,14 @@ public class BackMenu : MonoBehaviour,IPointerClickHandler
         if(IsQuit)
             return;
         UIManager.ShowPanel("FadeInPanel");
+        GameManager.INS.UnPauseGame();
+        BaseLevelManager.INS.StopBGM();
         StartCoroutine(WaitToBack());
         IsQuit = true;
     }
 
     IEnumerator WaitToBack()
     {
-        GameManager.INS.UnPauseGame();
         yield return new  WaitForSecondsRealtime(2f);
         if(!string.IsNullOrWhiteSpace(AddLevelName))
             GameManager.INS.AddLevel(AddLevelName);

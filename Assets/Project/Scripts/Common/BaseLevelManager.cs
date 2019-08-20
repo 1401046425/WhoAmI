@@ -36,13 +36,26 @@ private Dictionary<string,AudioSource>SoundPlayer=new Dictionary<string, AudioSo
     private void Awake()
     {
         INS = this;
+        GameManager.INS.OnGameStateChange += OnStatusChange;
+    }
+
+    private void OnStatusChange(GameStatus obj)
+    {
+        if (obj == GameStatus.Pause)
+        {
+            PauseBGM();
+        }
+
+        if (obj == GameStatus.Running)
+        {
+            UnPauseBGM();
+        }
     }
 
     public void InitLevelManager()
     {
         
     }
-
     IEnumerator FadeBGM(AudioSource Audio,AudioClip audioClip,Action callback)
     {
         while (Audio.volume>0)
@@ -61,9 +74,11 @@ private Dictionary<string,AudioSource>SoundPlayer=new Dictionary<string, AudioSo
     }
     IEnumerator PauseBGM(AudioSource Audio)
     {
+        if (!Audio)
+            yield return null;
         while (Audio.volume>0)
         {
-            Audio.volume -=  0.03f;
+            Audio.volume -=  0.1f;
             yield return new WaitForSecondsRealtime(0.03f);
         }
         Audio.Pause();
@@ -73,7 +88,7 @@ private Dictionary<string,AudioSource>SoundPlayer=new Dictionary<string, AudioSo
         Audio.volume = 0;
         while (Audio.volume<1)
         {
-            Audio.volume += 0.03f;   
+            Audio.volume += 0.1f;   
             yield return new WaitForSecondsRealtime(0.03f);
         }
         Audio.UnPause();
@@ -149,18 +164,21 @@ private Dictionary<string,AudioSource>SoundPlayer=new Dictionary<string, AudioSo
 /// </summary>
     public void StopBGM()
     {
-        StartCoroutine( FadeOutBGM(BGM_Player));
+        if(BGM_Player)
+         StartCoroutine( FadeOutBGM(BGM_Player));
     }
 /// <summary>
 /// 暂停背景音乐
 /// </summary>
 public void PauseBGM()
  {
-     StartCoroutine(PauseBGM(BGM_Player));
+     if(BGM_Player)
+        StartCoroutine(PauseBGM(BGM_Player));
  }
 public void UnPauseBGM()
 {
-    StartCoroutine(UnPauseBGM(BGM_Player));
+    if(BGM_Player)
+        StartCoroutine(UnPauseBGM(BGM_Player));
 }
 /// <summary>
     /// 播放音效

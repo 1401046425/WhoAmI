@@ -15,7 +15,7 @@ public class UI_Mneu :BaseUIPanel
     {
         UIManager.ClosePanel("StartMenu");
         UIManager.ShowPanel("LevelPanel");
-        GameManager.INS.IsFirstEnterGameToday = false;
+        GameManager.INS.IsEnterGame = false;
     }
     public void QuitGame()
     {

@@ -8,10 +8,21 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public Action OnGameInit;
+    public Action<GameStatus> OnGameStateChange;
 
-    public bool IsFirstEnterGameToday;
+    public bool IsEnterGame;
     [HideInInspector] private string LastEnterLevelName;
-    public GameStatus Status;
+    private GameStatus GM_Status;
+    public GameStatus Status
+    {
+	    get { return GM_Status; }
+	    set
+	    {
+		    GM_Status = value;
+		    OnGameStateChange?.Invoke(GM_Status);
+	    }
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -22,19 +33,29 @@ public class GameManager : Singleton<GameManager>
 	    OnGameInit += InitAllLevel;
         OnGameInit += InitunLockedLevel;
         OnGameInit();
-        IsFirstEnterGameToday = true;
         Status = GameStatus.Running;
     }
     private List<string> unLockedLevelName=new List<string>();
     private List<string> AllLevelName=new List<string>();
-
+/// <summary>
+/// 注册当前已有关卡
+/// </summary>
     private void InitAllLevel()
     {
 	    AllLevelName.Add("Origin");
 	    AllLevelName.Add("BigFlood");
     }
+/// <summary>
+/// 判断是否解锁了关卡
+/// </summary>
+/// <param name="LevelName"></param>
+/// <returns></returns>
+public bool LevelHasUnLocked(string LevelName)
+{
+	return unLockedLevelName.Contains(LevelName);
+}
 
-    /// <summary>
+/// <summary>
 	/// 获取所有已经解锁的场景名称
 	/// </summary>
     public List<string> GetAllUnLockLevelName()
@@ -90,14 +111,12 @@ public class GameManager : Singleton<GameManager>
 
     public void PauseGame()
     {
-	    Physics.autoSimulation = false;
 	    Time.timeScale = 0;
 	    Status = GameStatus.Pause;
     }
 
     public void UnPauseGame()
     {
-	    Physics.autoSimulation = true;
 	    Time.timeScale = 1;
 	    Status = GameStatus.Running;
     }
