@@ -579,6 +579,19 @@
               </e>
             </e>
           </e>
+          <e p="Pixelplacement" t="Include">
+            <e p="iTween" t="Include">
+              <e p="iTween.cs" t="Include" />
+              <e p="ReadMe!" t="Include">
+                <e p="ReadMe!.txt" t="Include" />
+              </e>
+              <e p="Sample" t="Include">
+                <e p="MoveSample.cs" t="Include" />
+                <e p="RotateSample.cs" t="Include" />
+                <e p="SampleInfo.cs" t="Include" />
+              </e>
+            </e>
+          </e>
         </e>
         <e p="Project" t="Include">
           <e p="Assets" t="Include">
@@ -612,6 +625,9 @@
               </e>
             </e>
           </e>
+          <e p="Editor" t="Include">
+            <e p="StoryBlockEditor.cs" t="Include" />
+          </e>
           <e p="Font" t="Include">
             <e p="chinese.txt" t="Include" />
           </e>
@@ -640,13 +656,15 @@
           <e p="Scripts" t="Include">
             <e p="AlignPuzzle.cs" t="Include" />
             <e p="AutoFader.cs" t="Include" />
+            <e p="Award.cs" t="Include" />
+            <e p="AwardManager.cs" t="Include" />
             <e p="BackMenu.cs" t="Include" />
             <e p="CameraOrthographic.cs" t="Include" />
             <e p="CheckIsEnteredGame.cs" t="Include" />
             <e p="CheckProgress.cs" t="Include" />
             <e p="CheckTransForm.cs" t="Include" />
             <e p="ClickPoint.cs" t="Include" />
-            <e p="CMCameaController.cs" t="Include" />
+            <e p="CMCameraController.cs" t="Include" />
             <e p="CMCameraLooker.cs" t="Include" />
             <e p="Common" t="Include">
               <e p="BaseLevelManager.cs" t="Include" />
@@ -661,6 +679,7 @@
             <e p="FadeIn.cs" t="Include" />
             <e p="Fader.cs" t="Include" />
             <e p="FadeSpriteObj.cs" t="Include" />
+            <e p="Hider.cs" t="Include" />
             <e p="InfinityObj.cs" t="Include" />
             <e p="InfinityObjMain.cs" t="Include" />
             <e p="Init.cs" t="Include" />
@@ -716,6 +735,8 @@
             <e p="MutualObj.cs" t="Include" />
             <e p="OpenLink.cs" t="Include" />
             <e p="PlayerController.cs" t="Include" />
+            <e p="PosProcessingText.cs" t="Include" />
+            <e p="QualitySettingsText.cs" t="Include" />
             <e p="QuitGame.cs" t="Include" />
             <e p="ReStart.cs" t="Include" />
             <e p="RotatePuzzle.cs" t="Include" />

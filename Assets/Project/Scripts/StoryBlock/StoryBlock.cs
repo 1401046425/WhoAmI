@@ -13,9 +13,15 @@ public class StoryBlock : MonoBehaviour//故事区块，管理每个故事片段
         get { return BlockName; }
     }
 
-    [SerializeField] private UnityEvent OnBlockInit;
-    [SerializeField] private UnityEvent OnBlockEnter;
-    [SerializeField] private UnityEvent OnBlockExit;
+    [SerializeField] public UnityEvent OnBlockInit;
+    [SerializeField] public UnityEvent OnBlockEnter;
+    [SerializeField] public UnityEvent OnBlockExit;
+
+    public string SetBlockName
+    {
+        set { BlockName = value; }
+    }
+
     public virtual void OnInit()//区块初始化
     {
         OnBlockInit?.Invoke();

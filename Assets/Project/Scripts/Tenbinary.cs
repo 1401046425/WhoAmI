@@ -25,7 +25,7 @@ public class Tenbinary : MonoBehaviour
     {
         if(isfinish)
             return;
-        if (Value < TenbinaryValue+1)
+        if (Value < TenbinaryValue)
         {
             Value++;
             GeWei.text = Value.ToString();

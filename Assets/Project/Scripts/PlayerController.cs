@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Runtime.CompilerServices;
@@ -26,6 +27,17 @@ public class PlayerController : MonoBehaviour
         m_PlayrRigid.freezeRotation = true;
         LeanTouch.OnFingerSet += OnFingerSet;
         LeanTouch.OnFingerUp += OnFingerUp;
+    }
+
+    private void Start()
+    {
+        if (GameManager.INS.IsEnterGame)
+        {
+            rot.y = 270;
+            transform.eulerAngles = new Vector3(0, rot.y, 0);
+            Camera.eulerAngles=new Vector3(rot.x, rot.y, 0);
+
+        }
     }
 
     public void ActiveControl()
@@ -92,6 +104,5 @@ public class PlayerController : MonoBehaviour
         // m_PlayrRigid.velocity = Vector3.SmoothDamp(m_PlayrRigid.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         transform.Translate(new Vector3(InputPos.x, m_PlayrRigid.velocity.y, InputPos.y) * m_MoveSpeed *
                                 Time.fixedDeltaTime);
-  
     }
 }

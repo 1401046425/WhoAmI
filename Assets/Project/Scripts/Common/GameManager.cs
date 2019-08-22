@@ -9,6 +9,19 @@ public class GameManager : Singleton<GameManager>
 {
     public Action OnGameInit;
     public Action<GameStatus> OnGameStateChange;
+    private string NewAddLevel;
+    public ulong Money {get{
+		    if (!ES3.KeyExists("Money"))
+		    {
+			    ES3.Save<List<ulong>>("Money", 0);
+		    }
+		    return 	ES3.Load<ulong>("Money");;
+	    }
+	    set
+	    {
+		    ES3.Save<List<ulong>>("Money", ES3.Load<ulong>("Money")+value);
+	    }
+    }
 
     public bool IsEnterGame;
     [HideInInspector] private string LastEnterLevelName;
@@ -27,6 +40,7 @@ public class GameManager : Singleton<GameManager>
     {
         DontDestroyOnLoad(this);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;//永远不熄屏
+        Application.targetFrameRate=-1;//不限制帧率
         InitGame();
     }
     public void InitGame()
@@ -84,10 +98,23 @@ public bool LevelHasUnLocked(string LevelName)
 	{
         if (unLockedLevelName.Contains(LevelName))
             return;
-        if(AllLevelName.Contains(LevelName))
+        if(!AllLevelName.Contains(LevelName))
+	        return;
 			unLockedLevelName.Add(LevelName);
         ES3.Save<List<string>>("LevelData", unLockedLevelName);
+        NewAddLevel = LevelName;
 	}
+/// <summary>
+/// 拿走新增的关卡名称
+/// </summary>
+/// <returns></returns>
+    public string TakeNewAddLevel()
+    {
+	    var LevelName = NewAddLevel;
+	    NewAddLevel = null;
+	    return LevelName;
+    }
+
     /// <summary>
     /// 开始关卡
     /// </summary>

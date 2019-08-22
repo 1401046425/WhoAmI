@@ -24,7 +24,10 @@ public class MainBookManager : MonoBehaviour
   void UpdateLevel()
   {
     var Index = GameManager.INS.GetAllUnLockLevelName().Count;
-    Book.currentPaper = Index;
-    Book.EndFlippingPaper = Index-1;
+
+      Book.currentPaper = Index;
+
+      Book.EndFlippingPaper = Index-1;
+
   }
 }
