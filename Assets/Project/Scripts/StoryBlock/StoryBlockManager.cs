@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using Cinemachine;
-using Cinemachine.Editor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Object = UnityEngine.Object;
 
 public class StoryBlockManager : MonoBehaviour
 {
@@ -126,93 +121,7 @@ public class StoryBlockManager : MonoBehaviour
         StoryBlocks.Add(Block);
     }
 
-    /// <summary>
-/// 新建一个故事区块
-/// </summary>
-/// <param name="BlockName"></param>
-    public void CreateNewBlock(string BlockName)
-    {
-        if (string.IsNullOrWhiteSpace(BlockName))
-            return;
-        if (HasBlock(BlockName))
-            return;
-        var Block = new GameObject().AddComponent<StoryBlock>();
-        Block.SetBlockName = BlockName;
-        Block.transform.name = BlockName;
-        Block.transform.SetParent(transform);
-        StoryBlocks.Add(Block);
-        var Camera = CreateVirtualCamera();
-        Camera.transform.SetParent(Block.transform);
-        Camera.m_Priority = 0;
-        Camera.transform.position = new Vector3(0, 0, -10); 
-        Camera.gameObject.AddComponent<CMCameraController>();
 
-    }
 
-    public static CinemachineVirtualCamera CreateVirtualCamera()
-    {
-        return InternalCreateVirtualCamera(
-            "CM vcam", true, typeof(CinemachineComposer), typeof(CinemachineTransposer));
-    }
-
-    static CinemachineVirtualCamera InternalCreateVirtualCamera(
-        string name, bool selectIt, params Type[] components)
-    {
-        // Create a new virtual camera
-        CreateCameraBrainIfAbsent();
-        GameObject go = InspectorUtility.CreateGameObject(
-            GenerateUniqueObjectName(typeof(CinemachineVirtualCamera), name),
-            typeof(CinemachineVirtualCamera));
-        if (SceneView.lastActiveSceneView != null)
-            go.transform.position = SceneView.lastActiveSceneView.pivot;
-        Undo.RegisterCreatedObjectUndo(go, "create " + name);
-        CinemachineVirtualCamera vcam = go.GetComponent<CinemachineVirtualCamera>();
-        GameObject componentOwner = vcam.GetComponentOwner().gameObject;
-        foreach (Type t in components)
-            Undo.AddComponent(componentOwner, t);
-        vcam.InvalidateComponentPipeline();
-        if (selectIt)
-            Selection.activeObject = go;
-        return vcam;
-    }
-
-    public static string GenerateUniqueObjectName(Type type, string prefix)
-    {
-        int count = 0;
-        UnityEngine.Object[] all = Resources.FindObjectsOfTypeAll(type);
-        foreach (UnityEngine.Object o in all)
-        {
-            if (o != null && o.name.StartsWith(prefix))
-            {
-                string suffix = o.name.Substring(prefix.Length);
-                int i;
-                if (Int32.TryParse(suffix, out i) && i > count)
-                    count = i;
-            }
-        }
-
-        return prefix + (count + 1);
-    }
-
-    public static void CreateCameraBrainIfAbsent()
-    {
-        CinemachineBrain[] brains = UnityEngine.Object.FindObjectsOfType(
-            typeof(CinemachineBrain)) as CinemachineBrain[];
-        if (brains == null || brains.Length == 0)
-        {
-            Camera cam = Camera.main;
-            if (cam == null)
-            {
-                Camera[] cams = UnityEngine.Object.FindObjectsOfType(
-                    typeof(Camera)) as Camera[];
-                if (cams != null && cams.Length > 0)
-                    cam = cams[0];
-            }
-
-            if (cam != null)
-            {
-                Undo.AddComponent<CinemachineBrain>(cam.gameObject);
-            }
-        }
-    }
+ 
 }

@@ -654,36 +654,46 @@
             </e>
           </e>
           <e p="Scripts" t="Include">
-            <e p="AlignPuzzle.cs" t="Include" />
-            <e p="AutoFader.cs" t="Include" />
-            <e p="Award.cs" t="Include" />
-            <e p="AwardManager.cs" t="Include" />
-            <e p="BackMenu.cs" t="Include" />
-            <e p="CameraOrthographic.cs" t="Include" />
-            <e p="CheckIsEnteredGame.cs" t="Include" />
-            <e p="CheckProgress.cs" t="Include" />
-            <e p="CheckTransForm.cs" t="Include" />
-            <e p="ClickPoint.cs" t="Include" />
-            <e p="CMCameraController.cs" t="Include" />
-            <e p="CMCameraLooker.cs" t="Include" />
             <e p="Common" t="Include">
+              <e p="AutoFader.cs" t="Include" />
+              <e p="BackMenu.cs" t="Include" />
               <e p="BaseLevelManager.cs" t="Include" />
+              <e p="CameraOrthographic.cs" t="Include" />
+              <e p="CheckIsEnteredGame.cs" t="Include" />
+              <e p="CheckProgress.cs" t="Include" />
+              <e p="CheckTransForm.cs" t="Include" />
+              <e p="ClickPoint.cs" t="Include" />
+              <e p="CMCameraController.cs" t="Include" />
+              <e p="CMCameraLooker.cs" t="Include" />
+              <e p="FadeIn.cs" t="Include" />
+              <e p="Fader.cs" t="Include" />
+              <e p="FadeSpriteObj.cs" t="Include" />
               <e p="FPSCounter.cs" t="Include" />
               <e p="GameManager.cs" t="Include" />
+              <e p="Hider.cs" t="Include" />
+              <e p="Init.cs" t="Include" />
               <e p="ItemManager.cs" t="Include" />
               <e p="OnMouseClick2D.cs" t="Include" />
+              <e p="OpenLink.cs" t="Include" />
+              <e p="ReStart.cs" t="Include" />
               <e p="Singleton.cs" t="Include" />
               <e p="SpriteFX.cs" t="Include" />
+              <e p="StoryBlockTester.cs" t="Include" />
+              <e p="TextChanger.cs" t="Include" />
+              <e p="TextLevelCheck.cs" t="Include" />
+              <e p="TransBiger.cs" t="Include" />
+              <e p="UIOpener.cs" t="Include" />
+              <e p="WaitInvoke.cs" t="Include" />
             </e>
-            <e p="EndPanel.cs" t="Include" />
-            <e p="FadeIn.cs" t="Include" />
-            <e p="Fader.cs" t="Include" />
-            <e p="FadeSpriteObj.cs" t="Include" />
-            <e p="Hider.cs" t="Include" />
-            <e p="InfinityObj.cs" t="Include" />
-            <e p="InfinityObjMain.cs" t="Include" />
-            <e p="Init.cs" t="Include" />
-            <e p="JudgeDraw.cs" t="Include" />
+            <e p="Flip" t="Include">
+              <e p="Flip.cs" t="Include" />
+              <e p="FlipGroup.cs" t="Include" />
+            </e>
+            <e p="InfinityObj" t="Include">
+              <e p="InfinityObj.cs" t="Include" />
+              <e p="InfinityObjMain.cs" t="Include" />
+              <e p="MutualObj.cs" t="Include" />
+            </e>
             <e p="Level0" t="Include">
               <e p="BigBang.cs" t="Include" />
               <e p="Level0Manager.cs" t="Include" />
@@ -711,6 +721,7 @@
               <e p="PosChangerTrigger.cs" t="Include" />
               <e p="SenceObject.cs" t="Include" />
               <e p="StartTree.cs" t="Include" />
+              <e p="Tenbinary.cs" t="Include" />
               <e p="TextTrigger.cs" t="Include" />
               <e p="TimeFramePanel.cs" t="Include" />
               <e p="TimeLineTrigger.cs" t="Include" />
@@ -722,8 +733,21 @@
               <e p="TimeTaskWall.cs" t="Include" />
               <e p="Trigger.cs" t="Include" />
             </e>
-            <e p="LevelOpener.cs" t="Include" />
-            <e p="MainBookManager.cs" t="Include" />
+            <e p="LianLianKan" t="Include">
+              <e p="Lianliankan.cs" t="Include" />
+              <e p="LianliankanGroup.cs" t="Include" />
+            </e>
+            <e p="Lobby" t="Include">
+              <e p="Award.cs" t="Include" />
+              <e p="AwardManager.cs" t="Include" />
+              <e p="LevelOpener.cs" t="Include" />
+              <e p="MainBookManager.cs" t="Include" />
+              <e p="PlayerController.cs" t="Include" />
+              <e p="PosProcessingText.cs" t="Include" />
+              <e p="QualitySettingsText.cs" t="Include" />
+              <e p="QuitGame.cs" t="Include" />
+              <e p="VersionText.cs" t="Include" />
+            </e>
             <e p="Menu" t="Include">
               <e p="Level1EndPanel.cs" t="Include" />
               <e p="MenuManager.cs" t="Include" />
@@ -732,33 +756,22 @@
               <e p="UI_LevelIcon.cs" t="Include" />
               <e p="UI_Mneu.cs" t="Include" />
             </e>
-            <e p="MutualObj.cs" t="Include" />
-            <e p="OpenLink.cs" t="Include" />
-            <e p="PlayerController.cs" t="Include" />
-            <e p="PosProcessingText.cs" t="Include" />
-            <e p="QualitySettingsText.cs" t="Include" />
-            <e p="QuitGame.cs" t="Include" />
-            <e p="ReStart.cs" t="Include" />
-            <e p="RotatePuzzle.cs" t="Include" />
+            <e p="Puzzile" t="Include">
+              <e p="AlignPuzzle.cs" t="Include" />
+              <e p="RotatePuzzle.cs" t="Include" />
+            </e>
             <e p="StoryBlock" t="Include">
               <e p="StoryBlock.cs" t="Include" />
               <e p="StoryBlockManager.cs" t="Include" />
             </e>
-            <e p="StoryBlockTester.cs" t="Include" />
-            <e p="Tenbinary.cs" t="Include" />
-            <e p="TextChanger.cs" t="Include" />
-            <e p="TextLevelCheck.cs" t="Include" />
-            <e p="TransBiger.cs" t="Include" />
-            <e p="UIOpener.cs" t="Include" />
             <e p="UIPanel" t="Include">
+              <e p="EndPanel.cs" t="Include" />
               <e p="FadeInPanel.cs" t="Include" />
               <e p="FadeOutPanel.cs" t="Include" />
               <e p="HolyBible.cs" t="Include" />
               <e p="StartPanel.cs" t="Include" />
               <e p="SuMeiWangBiao.cs" t="Include" />
             </e>
-            <e p="VersionText.cs" t="Include" />
-            <e p="WaitInvoke.cs" t="Include" />
           </e>
           <e p="Shader" t="Include">
             <e p="GrabPassBlur.shader" t="Include" />

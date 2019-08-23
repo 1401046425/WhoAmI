@@ -37,7 +37,7 @@ public  class StoryBlockEditor:EditorWindow
                 }
                 else
                 {
-                    BlockManager.CreateNewBlock(InputInfo);  
+                    CreateNewBlock(InputInfo);  
                 }
   
             }
@@ -63,9 +63,95 @@ public  class StoryBlockEditor:EditorWindow
             }
         }
 
-        
+
+    }
+    /// <summary>
+    /// 新建一个故事区块
+    /// </summary>
+    /// <param name="BlockName"></param>
+    public void CreateNewBlock(string BlockName)
+    {
+        if (string.IsNullOrWhiteSpace(BlockName))
+            return;
+        if (BlockManager.StoryBlocks.Contains(BlockManager.GetBlock(BlockName)))
+            return;
+        var Block = new GameObject().AddComponent<StoryBlock>();
+        Block.SetBlockName = BlockName;
+        Block.transform.name = BlockName;
+        Block.transform.SetParent(BlockManager.transform);
+        BlockManager.StoryBlocks.Add(Block);
+        var Camera = CreateVirtualCamera();
+        Camera.transform.SetParent(Block.transform);
+        Camera.m_Priority = 0;
+        Camera.transform.position = new Vector3(0, 0, -10); 
+        Camera.gameObject.AddComponent<CMCameraController>();
+    }
+public static Cinemachine.CinemachineVirtualCamera CreateVirtualCamera()
+    {
+        return InternalCreateVirtualCamera(
+            "CM vcam", true, typeof(Cinemachine.CinemachineComposer), typeof(Cinemachine.CinemachineTransposer));
     }
 
+    static Cinemachine.CinemachineVirtualCamera InternalCreateVirtualCamera(
+        string name, bool selectIt, params Type[] components)
+    {
+        // Create a new virtual camera
+        CreateCameraBrainIfAbsent();
+        GameObject go = Cinemachine.Editor.InspectorUtility.CreateGameObject(
+            GenerateUniqueObjectName(typeof(Cinemachine.CinemachineVirtualCamera), name),
+            typeof(Cinemachine.CinemachineVirtualCamera));
+        if (SceneView.lastActiveSceneView != null)
+            go.transform.position = SceneView.lastActiveSceneView.pivot;
+        Undo.RegisterCreatedObjectUndo(go, "create " + name);
+        Cinemachine.CinemachineVirtualCamera vcam = go.GetComponent<Cinemachine.CinemachineVirtualCamera>();
+        GameObject componentOwner = vcam.GetComponentOwner().gameObject;
+        foreach (Type t in components)
+            Undo.AddComponent(componentOwner, t);
+        vcam.InvalidateComponentPipeline();
+        if (selectIt)
+            Selection.activeObject = go;
+        return vcam;
+    }
+
+    public static string GenerateUniqueObjectName(Type type, string prefix)
+    {
+        int count = 0;
+        UnityEngine.Object[] all = Resources.FindObjectsOfTypeAll(type);
+        foreach (UnityEngine.Object o in all)
+        {
+            if (o != null && o.name.StartsWith(prefix))
+            {
+                string suffix = o.name.Substring(prefix.Length);
+                int i;
+                if (Int32.TryParse(suffix, out i) && i > count)
+                    count = i;
+            }
+        }
+
+        return prefix + (count + 1);
+    }
+
+    public static void CreateCameraBrainIfAbsent()
+    {
+        Cinemachine.CinemachineBrain[] brains = UnityEngine.Object.FindObjectsOfType(
+            typeof(Cinemachine.CinemachineBrain)) as Cinemachine.CinemachineBrain[];
+        if (brains == null || brains.Length == 0)
+        {
+            Camera cam = Camera.main;
+            if (cam == null)
+            {
+                Camera[] cams = UnityEngine.Object.FindObjectsOfType(
+                    typeof(Camera)) as Camera[];
+                if (cams != null && cams.Length > 0)
+                    cam = cams[0];
+            }
+
+            if (cam != null)
+            {
+                Undo.AddComponent<Cinemachine.CinemachineBrain>(cam.gameObject);
+            }
+        }
+    }
     private  void DuplicateBlock(GameObject obj)
     {
         var BlockObj= Instantiate(obj);
