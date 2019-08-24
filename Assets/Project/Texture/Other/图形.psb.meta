@@ -160,7 +160,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 212
-      y: 338
+      y: 486
       width: 155
       height: 154
     spriteID: 98a2e4bd296504c5eadd37caf42d30ca
@@ -173,7 +173,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 189, y: 315}
+    uvTransform: {x: 189, y: 463}
   - name: "\u6708\u7259\u5F62"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -226,7 +226,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 212
-      y: 500
+      y: 648
       width: 132
       height: 178
     spriteID: ccae4a8802aa448348cbfd2290c2c6ca
@@ -239,7 +239,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 177, y: 489}
+    uvTransform: {x: 177, y: 637}
   - name: "\u661F\u5F62"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -284,6 +284,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -12, y: 196}
+  - name: "\u653E\u5927\u955C"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 212
+      y: 338
+      width: 173
+      height: 140
+    spriteID: 65d5a2368d0ff4b98ac0b7dfd13bfa6e
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 198, y: 308}
   platformSettings:
   - name: Default
     overridden: 1
@@ -313,6 +335,13 @@ ScriptedImporter:
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: "\u653E\u5927\u955C"
+    spriteName: "\u653E\u5927\u955C"
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 65d5a2368d0ff4b98ac0b7dfd13bfa6e
+    layerID: 30
+    mosaicPosition: {x: 212, y: 338}
   - name: "\u5341\u89D2\u5F62"
     spriteName: "\u5341\u89D2\u5F62"
     isGroup: 0
@@ -340,7 +369,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 98a2e4bd296504c5eadd37caf42d30ca
     layerID: 21
-    mosaicPosition: {x: 212, y: 338}
+    mosaicPosition: {x: 212, y: 486}
   - name: "\u6708\u7259\u5F62"
     spriteName: "\u6708\u7259\u5F62"
     isGroup: 0
@@ -361,7 +390,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: ccae4a8802aa448348cbfd2290c2c6ca
     layerID: 9
-    mosaicPosition: {x: 212, y: 500}
+    mosaicPosition: {x: 212, y: 648}
   - name: "\u661F\u5F62"
     spriteName: "\u661F\u5F62"
     isGroup: 0

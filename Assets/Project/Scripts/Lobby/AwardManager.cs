@@ -33,7 +33,7 @@ public class AwardManager : MonoBehaviour
         {
             award.gameObject.SetActive(true);
             award.transform.position = BackPos.position;
-            StartCoroutine(Tween(award.gameObject, award.OrinPos,6f,1.5f));
+            StartCoroutine(Tween(award.gameObject, award.OrinPos,6f,3f));
         }
     }
 

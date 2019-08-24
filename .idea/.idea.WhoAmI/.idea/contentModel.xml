@@ -756,6 +756,10 @@
               <e p="UI_LevelIcon.cs" t="Include" />
               <e p="UI_Mneu.cs" t="Include" />
             </e>
+            <e p="PassWord" t="Include">
+              <e p="PassWord.cs" t="Include" />
+              <e p="WordText.cs" t="Include" />
+            </e>
             <e p="Puzzile" t="Include">
               <e p="AlignPuzzle.cs" t="Include" />
               <e p="RotatePuzzle.cs" t="Include" />

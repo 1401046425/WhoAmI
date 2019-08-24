@@ -10,6 +10,7 @@ public  class StoryBlockEditor:EditorWindow
     private  StoryBlockManager BlockManager;
     private  GameObject BlockPrefab;
     private  string InputInfo;
+    private int BlockIndex;
     [MenuItem("Tools/StoryBlockEditor")]
     public static void ConfigDialog()
     {
@@ -41,7 +42,14 @@ public  class StoryBlockEditor:EditorWindow
                 }
   
             }
-        
+
+            BlockIndex = EditorPrefs.GetInt("BlockIndex");
+            BlockIndex= EditorGUILayout.IntField("区块序号",BlockIndex);
+            EditorPrefs.SetInt("BlockIndex",BlockIndex);
+            if (GUILayout.Button(String.Format("跳跃到{0}区块", BlockIndex)))
+            {
+                BlockManager.JumpBlock(BlockIndex);
+            }
             EditorGUILayout.LabelField(String.Format("区块总数:{0}",BlockManager.StoryBlocks.Count),EditorStyles.boldLabel);
             for (int i = 0; i < BlockManager.StoryBlocks.Count; i++)
             {
@@ -52,6 +60,7 @@ public  class StoryBlockEditor:EditorWindow
                 }
 
             }
+
         }
         else
         {
@@ -62,6 +71,7 @@ public  class StoryBlockEditor:EditorWindow
               Manager.transform.name = "StoryBlockManager";
             }
         }
+
 
 
     }
