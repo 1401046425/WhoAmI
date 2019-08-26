@@ -115,6 +115,13 @@
             <e p="ES2_Sprite.cs" t="Include" />
           </e>
         </e>
+        <e p="ErbGameArt" t="Include">
+          <e p="Procedural fire" t="Include">
+            <e p="Shaders" t="Include">
+              <e p="FireSphere.shader" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Lean" t="Include">
           <e p="Common" t="Include">
             <e p="Examples" t="Include">
@@ -654,6 +661,11 @@
             </e>
           </e>
           <e p="Scripts" t="Include">
+            <e p="Clock" t="Include">
+              <e p="Clock.cs" t="Include" />
+              <e p="ClockChecker.cs" t="Include" />
+              <e p="ClockFadeManager.cs" t="Include" />
+            </e>
             <e p="Common" t="Include">
               <e p="AutoFader.cs" t="Include" />
               <e p="BackMenu.cs" t="Include" />
@@ -667,12 +679,12 @@
               <e p="CMCameraLooker.cs" t="Include" />
               <e p="FadeIn.cs" t="Include" />
               <e p="Fader.cs" t="Include" />
+              <e p="FaderGroup.cs" t="Include" />
               <e p="FadeSpriteObj.cs" t="Include" />
               <e p="FPSCounter.cs" t="Include" />
               <e p="GameManager.cs" t="Include" />
               <e p="Hider.cs" t="Include" />
               <e p="Init.cs" t="Include" />
-              <e p="ItemManager.cs" t="Include" />
               <e p="OnMouseClick2D.cs" t="Include" />
               <e p="OpenLink.cs" t="Include" />
               <e p="ReStart.cs" t="Include" />
@@ -682,12 +694,20 @@
               <e p="TextChanger.cs" t="Include" />
               <e p="TextLevelCheck.cs" t="Include" />
               <e p="TransBiger.cs" t="Include" />
+              <e p="Trigger.cs" t="Include" />
               <e p="UIOpener.cs" t="Include" />
               <e p="WaitInvoke.cs" t="Include" />
             </e>
             <e p="Flip" t="Include">
               <e p="Flip.cs" t="Include" />
               <e p="FlipGroup.cs" t="Include" />
+            </e>
+            <e p="HumanOrigin" t="Include">
+              <e p="AlienPlane.cs" t="Include" />
+              <e p="Meteorite.cs" t="Include" />
+              <e p="MeteoriteGroup.cs" t="Include" />
+              <e p="MeteoriteSpawn.cs" t="Include" />
+              <e p="TimerText.cs" t="Include" />
             </e>
             <e p="InfinityObj" t="Include">
               <e p="InfinityObj.cs" t="Include" />
@@ -700,38 +720,6 @@
               <e p="View" t="Include">
                 <e p="View_Panel_tuibei.cs" t="Include" />
               </e>
-            </e>
-            <e p="Level1" t="Include">
-              <e p="AndroidTest.cs" t="Include" />
-              <e p="CharacterController2D.cs" t="Include" />
-              <e p="CraftManager.cs" t="Include" />
-              <e p="Item.cs" t="Include" />
-              <e p="Item_Hand.cs" t="Include" />
-              <e p="Item_Weapon.cs" t="Include" />
-              <e p="ItemGrid.cs" t="Include" />
-              <e p="ItemGridPanel.cs" t="Include" />
-              <e p="ItemIcon.cs" t="Include" />
-              <e p="Level1Manager.cs" t="Include" />
-              <e p="LockWall.cs" t="Include" />
-              <e p="Pig.cs" t="Include" />
-              <e p="PlayerChangeTrigger.cs" t="Include" />
-              <e p="PlayerController2D.cs" t="Include" />
-              <e p="PlayerManager.cs" t="Include" />
-              <e p="PlayerShadow.cs" t="Include" />
-              <e p="PosChangerTrigger.cs" t="Include" />
-              <e p="SenceObject.cs" t="Include" />
-              <e p="StartTree.cs" t="Include" />
-              <e p="Tenbinary.cs" t="Include" />
-              <e p="TextTrigger.cs" t="Include" />
-              <e p="TimeFramePanel.cs" t="Include" />
-              <e p="TimeLineTrigger.cs" t="Include" />
-              <e p="TimeTask.cs" t="Include" />
-              <e p="TimeTaskLock.cs" t="Include" />
-              <e p="TimeTaskManager.cs" t="Include" />
-              <e p="TimeTaskPlayTrigger.cs" t="Include" />
-              <e p="TimeTaskPointTrigger.cs" t="Include" />
-              <e p="TimeTaskWall.cs" t="Include" />
-              <e p="Trigger.cs" t="Include" />
             </e>
             <e p="LianLianKan" t="Include">
               <e p="Lianliankan.cs" t="Include" />
@@ -810,6 +798,10 @@
               <e p="诺亚方舟.txt" t="Include" />
               <e p="造人.txt" t="Include" />
             </e>
+            <e p="Level2" t="Include">
+              <e p="大洪水.txt" t="Include" />
+              <e p="旧约圣经描述大洪水.txt" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Room" t="Include">
@@ -875,34 +867,6 @@
             <e p="UIFX.cs" t="Include" />
             <e p="UIManager.cs" t="Include" />
           </e>
-        </e>
-        <e p="YarnSpinner" t="Include">
-          <e p="Code" t="Include">
-            <e p="DialogueRunner.cs" t="Include" />
-            <e p="Editor" t="Include">
-              <e p="YarnSpinnerEditorWindow.cs" t="Include" />
-              <e p="YarnSpinnerTests.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Examples" t="Include">
-            <e p="DemoAssets" t="Include">
-              <e p="SimpleExampleScript.yarn.txt" t="Include" />
-              <e p="Space" t="Include">
-                <e p="Sally.yarn.txt" t="Include" />
-                <e p="Ship.yarn.txt" t="Include" />
-              </e>
-            </e>
-            <e p="DemoScripts" t="Include">
-              <e p="CameraFollow.cs" t="Include" />
-              <e p="ExampleDialogueUI.cs" t="Include" />
-              <e p="ExampleVariableStorage.cs" t="Include" />
-              <e p="MobileOnly.cs" t="Include" />
-              <e p="NPC.cs" t="Include" />
-              <e p="PlayerCharacter.cs" t="Include" />
-              <e p="SpriteSwitcher.cs" t="Include" />
-            </e>
-          </e>
-          <e p="README.txt" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

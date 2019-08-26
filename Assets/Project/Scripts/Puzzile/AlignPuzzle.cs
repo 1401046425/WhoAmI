@@ -91,12 +91,12 @@ public class AlignPuzzle : MonoBehaviour {
                 if (UseY) {
                     myTransform.position = LastPosition + new Vector3 (pos.x, pos.y, 0) * Time.fixedDeltaTime;
                 } else
-                    myTransform.position = LastPosition + new Vector3 (pos.x, myTransform.position.y, 0) * Time.fixedDeltaTime;
+                    myTransform.position = LastPosition + new Vector3 (pos.x, 0, 0) * Time.fixedDeltaTime;
             } else {
                 if (UseY) {
                     myTransform.position = LastPosition + new Vector3 (pos.x + pos.normalized.x * pos.magnitude, pos.y + pos.normalized.y * pos.magnitude, 0) * Time.fixedDeltaTime;
                 } else
-                    myTransform.position = LastPosition + new Vector3 (pos.x + pos.normalized.x * pos.magnitude, myTransform.position.y, 0) * Time.fixedDeltaTime;
+                    myTransform.position = LastPosition + new Vector3 (pos.x + pos.normalized.x * pos.magnitude, 0, 0) * Time.fixedDeltaTime;
             }
         }
 

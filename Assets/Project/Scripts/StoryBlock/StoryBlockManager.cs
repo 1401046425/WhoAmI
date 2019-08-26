@@ -67,6 +67,8 @@ public class StoryBlockManager : MonoBehaviour
     {
         if (_PlayBlockIndex > StoryBlocks.Count)
             return;
+        if(NowPlayingBlock)
+            NowPlayingBlock.OnExit();
         PlayBlockIndex++;
         NowPlayingBlock = StoryBlocks[_PlayBlockIndex];
         NowPlayingBlock.OnEnter();
@@ -79,7 +81,6 @@ public class StoryBlockManager : MonoBehaviour
 
     public void StopNowBlock() //停止现在的故事区块
     {
-        NowPlayingBlock.OnExit();
         PlayNextBlock();
     }
 
